@@ -21,7 +21,7 @@ writeFileSync(join(client, "404.html"), html);
 writeFileSync(join(client, ".nojekyll"), "");
 
 /** GitHub Pages pretty-URLs: /bay serves bay.html. Direct links then load the SPA. */
-const routes = ["bay", "shore", "roster"];
+const routes = ["bay", "shore", "roster", "city"];
 for (const route of routes) {
   writeFileSync(join(client, `${route}.html`), html);
 }

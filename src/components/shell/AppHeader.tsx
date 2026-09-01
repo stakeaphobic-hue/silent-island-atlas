@@ -10,7 +10,7 @@ export function AppHeader({
   searchLabel,
   extra,
   title = "Silent Island Atlas",
-  kicker = "Island · Shore · Bay · Roster",
+  kicker = "Island · Shore · City · Bay · Roster",
 }: {
   search: string;
   onSearch: (v: string) => void;
@@ -43,6 +43,13 @@ export function AppHeader({
           activeProps={{ className: "bg-paper text-ink hover:text-ink" }}
         >
           Shore
+        </Link>
+        <Link
+          to="/city"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-muted hover:text-paper"
+          activeProps={{ className: "bg-paper text-ink hover:text-ink" }}
+        >
+          City
         </Link>
         <Link
           to="/bay"

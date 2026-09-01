@@ -148,6 +148,14 @@ export function Dossier({
         <p className="text-sm leading-relaxed text-steel">{summary}</p>
         <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted">{body}</p>
 
+        {place?.id === "silent-city" && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Button variant="secondary" size="sm" asChild>
+              <Link to="/city">Silent City chart</Link>
+            </Button>
+          </div>
+        )}
+
         {place?.id === "bwc-da" && (
           <div className="mt-4 flex flex-wrap gap-2">
             <Button variant="secondary" size="sm" asChild>
@@ -163,6 +171,11 @@ export function Dossier({
             <Button variant="secondary" size="sm" asChild>
               <Link to="/shore" search={{ town: "bwc-dv" }}>
                 BWC DV · Waterbury
+              </Link>
+            </Button>
+            <Button variant="secondary" size="sm" asChild>
+              <Link to="/city" search={{ place: "bwc-da" }}>
+                Silent City chart
               </Link>
             </Button>
           </div>
