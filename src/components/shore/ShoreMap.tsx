@@ -1,3 +1,5 @@
+import { useNavigate } from "@tanstack/react-router";
+import { ATLAS_LONG_ISLAND } from "@/data/island";
 import { SHORE_TOWNS, type ShoreTown } from "@/data/shore";
 
 export function ShoreMap({
@@ -13,6 +15,7 @@ export function ShoreMap({
   onNewYork: () => void;
   onBay: () => void;
 }) {
+  const navigate = useNavigate();
   return (
     <div className="relative h-full min-h-0 bg-water">
       <svg
@@ -130,14 +133,43 @@ export function ShoreMap({
         />
         <text
           x="40"
-          y="628"
-          fill="var(--color-subtle-fg)"
+          y="590"
+          fill="var(--color-paper)"
+          fillOpacity="0.7"
           fontSize="11"
           fontFamily="var(--font-sans)"
           letterSpacing="0.22em"
         >
           LONG ISLAND · NORTH SHORE
         </text>
+        {ATLAS_LONG_ISLAND.map((t) => {
+          const x = t.inland ? 210 : Math.round(t.x * (1100 / 1792));
+          const y = t.inland ? 632 : 614;
+          return (
+            <g
+              key={t.id}
+              className="cursor-pointer"
+              onClick={() => {
+                void navigate({ to: "/", search: { li: t.id } });
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`${t.name}, Long Island, open island chart`}
+            >
+              <circle cx={x} cy={y} r={t.inland ? 3.5 : 4} fill="var(--color-paper)" stroke="var(--color-ink)" strokeWidth={1} />
+              <text
+                x={t.inland ? x + 8 : x}
+                y={t.inland ? y + 4 : y - 8}
+                textAnchor={t.inland ? "start" : "middle"}
+                fill="var(--color-paper)"
+                fontSize={10}
+                fontFamily="var(--font-display)"
+              >
+                {t.name}
+              </text>
+            </g>
+          );
+        })}
 
         <g
           className="cursor-pointer"

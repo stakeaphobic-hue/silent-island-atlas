@@ -401,45 +401,67 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             </g>
             <text
               x={36}
-              y={998}
-              fill="var(--color-subtle-fg)"
-              fontSize={11}
+              y={868}
+              fill="var(--color-paper)"
+              fontSize={13}
               fontFamily="var(--font-sans)"
               letterSpacing="0.28em"
+              stroke="var(--color-ink)"
+              strokeWidth={4}
+              paintOrder="stroke"
               className="pointer-events-none"
             >
               LONG ISLAND · NORTH SHORE
             </text>
-            {ATLAS_LONG_ISLAND.map((t) => (
-              <g
-                key={t.id}
-                className="cursor-pointer"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSelect({ type: "li", id: t.id });
-                }}
-                onPointerDown={(e) => e.stopPropagation()}
-              >
-                <circle
-                  cx={t.x}
-                  cy={t.y}
-                  r={t.id === "port-jefferson" ? 6 : t.inland ? 4.5 : 5}
-                  fill="var(--color-elevated)"
-                  stroke="var(--color-brass)"
-                  strokeWidth={1.15}
-                />
-                <text
-                  x={t.inland ? t.x + 8 : t.x}
-                  y={t.inland ? t.y + 4 : t.y - 12}
-                  textAnchor={t.inland ? "start" : "middle"}
-                  fill="var(--color-steel)"
-                  fontSize={11}
-                  fontFamily="var(--font-display)"
+            {ATLAS_LONG_ISLAND.map((t) => {
+              const selected = selection.type === "li" && selection.id === t.id;
+              const lx = t.inland ? t.x + 10 : t.x;
+              const ly = t.inland ? t.y + 5 : t.y + 18;
+              const anchor = t.inland ? "start" : "middle";
+              return (
+                <g
+                  key={t.id}
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelect({ type: "li", id: t.id });
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
                 >
-                  {t.name}
-                </text>
-              </g>
-            ))}
+                  {selected && (
+                    <circle
+                      cx={t.x}
+                      cy={t.y}
+                      r={12}
+                      fill="none"
+                      stroke="var(--color-paper)"
+                      strokeWidth={1.2}
+                    />
+                  )}
+                  <circle
+                    cx={t.x}
+                    cy={t.y}
+                    r={t.id === "port-jefferson" ? 6.5 : t.inland ? 5 : 5.5}
+                    fill="var(--color-paper)"
+                    stroke="var(--color-ink)"
+                    strokeWidth={1.2}
+                  />
+                  <text
+                    x={lx}
+                    y={ly}
+                    textAnchor={anchor}
+                    fill="var(--color-paper)"
+                    fontSize={14}
+                    fontFamily="var(--font-display)"
+                    stroke="var(--color-ink)"
+                    strokeWidth={4}
+                    paintOrder="stroke"
+                  >
+                    {t.name}
+                  </text>
+                </g>
+              );
+            })}
             {COUNTIES.map((c) => (
               <text
                 key={c.id}
@@ -518,8 +540,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-ink/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ink/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-ink/50 to-transparent" />
 
       <div className="absolute right-3 top-3 flex flex-col gap-2">
         <Button
@@ -556,7 +577,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
         </Button>
       </div>
 
-      <p className="absolute bottom-3 left-3 max-w-[13rem] rounded-xl bg-elevated/90 px-3 py-2 text-xs text-muted shadow-border">
+      <p className="absolute left-3 top-3 max-w-[13rem] rounded-xl bg-elevated/90 px-3 py-2 text-xs text-muted shadow-border">
         Drag to pan. Scroll to zoom. Click a town.
       </p>
     </div>
