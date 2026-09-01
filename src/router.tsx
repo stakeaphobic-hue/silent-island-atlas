@@ -4,5 +4,10 @@ import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
   const basepath = (import.meta.env.BASE_URL || "/").replace(/\/$/, "") || undefined;
-  return createRouter({ routeTree, defaultErrorComponent: AppErrorComponent, basepath });
+  return createRouter({
+    routeTree,
+    defaultErrorComponent: AppErrorComponent,
+    basepath,
+    trailingSlash: "never",
+  });
 }
