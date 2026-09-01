@@ -228,7 +228,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
               HOUSATONIC
             </text>
             <path
-              d="M 600 96 C 220 280 190 740 810 930"
+              d="M 600 96 C 220 280 190 740 818 958"
               fill="none"
               stroke="color-mix(in oklab, var(--color-brass) 55%, transparent)"
               strokeWidth={1.6}
