@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { Minus, Plus, LocateFixed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type Selection } from "@/components/atlas/Dossier";
 import {
+  ATLAS_SHORE,
+  CONNECTICUT_LAND,
   COUNTESS_PATH,
   COUNTIES,
   COUNTY_SPLITS,
@@ -30,6 +33,7 @@ const COUNTY_FILL: Record<CountyId, string> = {
 };
 
 export function IslandMap({ selection, onSelect, layers }: Props) {
+  const navigate = useNavigate();
   const frameRef = useRef<HTMLDivElement>(null);
   const [cam, setCam] = useState({ x: 0, y: 0, k: 1 });
   const drag = useRef<{
@@ -169,6 +173,54 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
               }}
               onPointerDown={(e) => e.stopPropagation()}
             />
+            <path
+              d={CONNECTICUT_LAND}
+              fill="color-mix(in oklab, var(--color-ink) 72%, var(--color-water))"
+              stroke="color-mix(in oklab, var(--color-steel) 55%, transparent)"
+              strokeWidth={1.5}
+              pointerEvents="none"
+            />
+            <text
+              x={36}
+              y={28}
+              fill="var(--color-subtle-fg)"
+              fontSize={11}
+              fontFamily="var(--font-sans)"
+              letterSpacing="0.28em"
+              className="pointer-events-none"
+            >
+              THE SHORE · CONNECTICUT
+            </text>
+            {ATLAS_SHORE.map((t) => (
+              <g
+                key={t.id}
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void navigate({ to: "/shore", search: { town: t.id } });
+                }}
+                onPointerDown={(e) => e.stopPropagation()}
+              >
+                <circle
+                  cx={t.x}
+                  cy={t.y}
+                  r={t.id === "bridgeport" ? 7 : 5}
+                  fill="var(--color-elevated)"
+                  stroke="var(--color-brass)"
+                  strokeWidth={1.15}
+                />
+                <text
+                  x={t.x + (t.id === "waterbury" ? 10 : 0)}
+                  y={t.id === "waterbury" ? t.y + 4 : t.y - 10}
+                  textAnchor={t.id === "waterbury" ? "start" : "middle"}
+                  fill="var(--color-steel)"
+                  fontSize={11}
+                  fontFamily="var(--font-display)"
+                >
+                  {t.name}
+                </text>
+              </g>
+            ))}
             <g clipPath="url(#island-clip)">
               {(
                 [
@@ -194,16 +246,6 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
               ))}
             </g>
             <text
-              x={720}
-              y={108}
-              fill="var(--color-muted)"
-              fontSize={16}
-              fontFamily="var(--font-sans)"
-              letterSpacing="0.32em"
-            >
-              CONNECTICUT
-            </text>
-            <text
               x={620}
               y={940}
               fill="var(--color-muted)"
@@ -219,12 +261,25 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                 x={c.x}
                 y={c.y}
                 fill="var(--color-paper)"
-                fontSize={c.id === "countess" ? 18 : 20}
+                fontSize={c.id === "countess" ? 16 : 20}
                 fontFamily="var(--font-display)"
                 opacity={0.9}
                 className="pointer-events-none"
               >
                 {c.name.toUpperCase()}
+                {c.id === "countess" ? (
+                  <tspan
+                    x={c.x}
+                    dy="16"
+                    fill="var(--color-brass)"
+                    fontSize={11}
+                    fontFamily="var(--font-sans)"
+                    letterSpacing="0.16em"
+                    opacity={0.95}
+                  >
+                    AKA THE GILDED GROVE
+                  </tspan>
+                ) : null}
               </text>
             ))}
             {visible.map((p) => (

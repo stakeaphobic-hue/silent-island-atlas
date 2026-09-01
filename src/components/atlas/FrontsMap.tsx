@@ -44,8 +44,8 @@ export function FrontsMap({
         <text x="560" y="340" fill="var(--color-eerier)" fontSize="11" fontFamily="var(--font-sans)" opacity="0.7">
           Eerier
         </text>
-        <text x="700" y="210" fill="var(--color-countess)" fontSize="11" fontFamily="var(--font-sans)" opacity="0.7">
-          Countess
+        <text x="700" y="248" fill="var(--color-countess)" fontSize="11" fontFamily="var(--font-sans)" opacity="0.7">
+          Countess · Gilded Grove
         </text>
 
         {links.map(([a, b]) => {

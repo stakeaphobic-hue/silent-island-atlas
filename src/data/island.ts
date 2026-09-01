@@ -41,7 +41,19 @@ export const ISLAND_PATH =
   "M 130 500 C 160 380 280 300 420 290 C 560 282 680 310 800 340 C 920 370 1040 420 1160 500 C 1220 545 1240 600 1180 660 C 1080 730 920 750 760 740 C 600 728 440 700 300 640 C 200 590 140 540 130 500 Z";
 
 export const COUNTESS_PATH =
-  "M 1380 380 C 1420 280 1540 240 1640 270 C 1720 300 1740 380 1680 450 C 1620 510 1500 520 1420 470 C 1370 430 1360 400 1380 380 Z";
+  "M 1440 410 C 1468 348 1570 322 1670 342 C 1748 362 1770 438 1742 518 C 1718 588 1638 628 1532 616 C 1452 602 1412 518 1440 410 Z";
+
+/** Connecticut land at the top of the island chart — the Shore, looking south at the Sound. */
+export const CONNECTICUT_LAND =
+  "M 0 0 L 1792 0 L 1792 78 C 1640 58 1480 92 1280 70 C 1080 48 940 88 780 68 C 620 48 470 86 320 64 C 180 46 70 82 0 66 Z";
+
+export const ATLAS_SHORE: { id: string; name: string; x: number; y: number }[] = [
+  { id: "fairfield", name: "Fairfield", x: 360, y: 58 },
+  { id: "bridgeport", name: "Bridgeport", x: 620, y: 72 },
+  { id: "stratford", name: "Stratford", x: 860, y: 64 },
+  { id: "new-haven", name: "New Haven", x: 1160, y: 60 },
+  { id: "waterbury", name: "Waterbury", x: 680, y: 26 },
+];
 
 export const COUNTIES: County[] = [
   {
@@ -75,8 +87,8 @@ export const COUNTIES: County[] = [
     id: "countess",
     name: "Countess Island",
     short: "Gilded Grove",
-    x: 1490,
-    y: 250,
+    x: 1510,
+    y: 328,
     summary: "The Gilded Grove: estates on one side, MegaBlocks on the other.",
     body: "Countess Island, collectively The Gilded Grove, sits northeast of Shell Beach. Two worlds rarely mix. The Gilded Shroud is old money behind high walls and iron gates — Victorian-Gothic and Beaux-Arts mansions, private cemeteries, unused wings. Opposite it, three MegaBlocks — Shadow Bottom, Struggler’s Spire, and The Modest Veil — rise over dry docks and plants, each built to house two thousand families. Modest streets form a buffer between them. The BWC DA Tower stands on the Shroud: 2,666 ft of basalt-black art-deco gothic, with an airship docking ring and no pyramid crown.",
   },
@@ -561,8 +573,8 @@ export const PLACES: Place[] = [
     name: "The Gilded Shroud",
     kind: "landmark",
     county: "countess",
-    x: 1448,
-    y: 308,
+    x: 1478,
+    y: 428,
     layer: "landmarks",
     alwaysLabel: true,
     summary: "Old estates behind high walls. Unused wings. Locked gates after dusk.",
@@ -574,8 +586,8 @@ export const PLACES: Place[] = [
     name: "BWC DA Tower",
     kind: "landmark",
     county: "countess",
-    x: 1410,
-    y: 268,
+    x: 1462,
+    y: 398,
     layer: "landmarks",
     alwaysLabel: true,
     summary: "2,666 ft. Basalt-black art-deco gothic. Airship ring. No pyramid.",
@@ -587,8 +599,8 @@ export const PLACES: Place[] = [
     name: "Buffer Streets",
     kind: "town",
     county: "countess",
-    x: 1528,
-    y: 368,
+    x: 1562,
+    y: 492,
     layer: "towns",
     summary: "Modest streets between the Shroud and the towers.",
     body: "The only mixed ground on Countess Island. Clerks, drivers, and estate staff. High enough to see the gates, not high enough to be invited through them.",
@@ -598,8 +610,8 @@ export const PLACES: Place[] = [
     name: "The Modest Veil",
     kind: "megablock",
     county: "countess",
-    x: 1628,
-    y: 288,
+    x: 1668,
+    y: 428,
     layer: "megablocks",
     alwaysLabel: true,
     summary: "Highest of the three Countess towers. Quiet performance of almost-making-it.",
@@ -612,8 +624,8 @@ export const PLACES: Place[] = [
     name: "Struggler’s Spire",
     kind: "megablock",
     county: "countess",
-    x: 1670,
-    y: 348,
+    x: 1690,
+    y: 502,
     layer: "megablocks",
     alwaysLabel: true,
     summary: "Dock workers, welders, shift laborers. Sirens for shift change.",
@@ -626,8 +638,8 @@ export const PLACES: Place[] = [
     name: "Shadow Bottom",
     kind: "megablock",
     county: "countess",
-    x: 1608,
-    y: 428,
+    x: 1632,
+    y: 562,
     layer: "megablocks",
     alwaysLabel: true,
     summary: "Lowest tower. Damp concrete, boiled cabbage, the drop.",
@@ -640,8 +652,8 @@ export const PLACES: Place[] = [
     name: "Dry Docks",
     kind: "landmark",
     county: "countess",
-    x: 1548,
-    y: 468,
+    x: 1572,
+    y: 592,
     layer: "landmarks",
     summary: "Slips, cranes, and the work the towers were built around.",
     body: "The essential labor of Countess Island. Trades pass down through families. The MegaBlocks rise directly over the plants. Shift sirens set the clock for Struggler’s Spire.",
