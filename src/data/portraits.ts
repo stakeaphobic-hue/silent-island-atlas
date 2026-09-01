@@ -1,3 +1,5 @@
+import { asset } from "@/lib/utils";
+
 export const PORTRAITS: Record<string, string> = {
   "acadia-leblanc": "/portraits/acadia-leblanc.jpg",
   "antonio-fontana": "/portraits/antonio-fontana.jpg",
@@ -29,5 +31,6 @@ export const PORTRAITS: Record<string, string> = {
 };
 
 export function portraitOf(id: string) {
-  return PORTRAITS[id];
+  const src = PORTRAITS[id];
+  return src ? asset(src) : undefined;
 }

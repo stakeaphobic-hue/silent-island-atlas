@@ -15,7 +15,7 @@ import {
 import { FRONTS, frontById, searchFronts, type Front } from "@/data/fronts";
 import { peopleAtPlace, peopleInCounty } from "@/data/place-people";
 import { ClockFace } from "@/components/atlas/FrontsMap";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 
 export type Selection =
   | { type: "overview" }
@@ -121,7 +121,7 @@ export function Dossier({
       <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
         {place?.id === "bwc-da" ? (
           <img
-            src="/towers/bwc-da.png"
+            src={asset("/towers/bwc-da.png")}
             alt="BWC DA Tower"
             className="mb-4 aspect-[4/5] w-full max-w-56 rounded-lg object-cover shadow-border"
           />

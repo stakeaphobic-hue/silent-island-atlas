@@ -9,7 +9,7 @@ import { AppHeader, Chip } from "@/components/shell/AppHeader";
 import { Input } from "@/components/ui/input";
 import { LAYERS, type CountyId, type LayerId } from "@/data/island";
 import { frontById } from "@/data/fronts";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 
 const defaultLayers = Object.fromEntries(LAYERS.map((l) => [l.id, l.defaultOn])) as Record<
   LayerId,
@@ -144,7 +144,7 @@ export function AtlasApp() {
         {locator && !frontsMode && (
           <div className="absolute bottom-4 left-4 z-10 hidden w-[min(28rem,calc(100%-2rem))] overflow-hidden rounded-xl bg-elevated shadow-border md:block">
             <img
-              src="/charts/sound-locator.jpg"
+              src={asset("/charts/sound-locator.jpg")}
               alt="Silent Island in Long Island Sound, south of Bridgeport"
               className="aspect-[5/4] w-full object-cover outline outline-1 -outline-offset-1 outline-paper/10"
             />

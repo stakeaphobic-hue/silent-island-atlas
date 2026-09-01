@@ -16,7 +16,7 @@ import {
   shoreTown,
   type ShoreTown,
 } from "@/data/shore";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 
 type Sel = { type: "overview" } | { type: "town"; id: string } | { type: "new-york" };
 
@@ -173,7 +173,7 @@ function ShoreDossier({
       <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
         {town?.image ? (
           <img
-            src={town.image}
+            src={asset(town.image)}
             alt={town.name}
             className="mb-4 aspect-[4/5] w-full max-w-56 rounded-lg object-cover shadow-border"
           />

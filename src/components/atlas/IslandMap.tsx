@@ -14,6 +14,7 @@ import {
   type LayerId,
   type Place,
 } from "@/data/island";
+import { asset } from "@/lib/utils";
 
 type Props = {
   selection: Selection;
@@ -112,7 +113,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           }}
         >
           <img
-            src="/atlas/island.jpg"
+            src={asset("/atlas/island.jpg")}
             alt=""
             draggable={false}
             className="absolute inset-0 size-full object-contain"
