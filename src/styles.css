@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0d11;
+  --color-elevated: #14181f;
+  --color-subtle: #1c222c;
+  --color-paper: #e7e2d8;
+  --color-muted: #9aa3ad;
+  --color-subtle-fg: #6e7782;
+  --color-steel: #b7bec8;
+  --color-water: #1c2834;
+  --color-brass: #c4b59a;
+  --color-danger: #a45c5c;
+  --color-border: color-mix(in oklab, var(--color-paper) 12%, transparent);
+  --color-ring: color-mix(in oklab, var(--color-brass) 70%, white);
+  --color-weirding: #6d7a68;
+  --color-silent: #8a93a0;
+  --color-eerier: #8a6e62;
+  --color-countess: #c4b59a;
+
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-paper) 10%, transparent);
+  --shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--color-paper) 16%, transparent);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:root {
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-slow: 400ms;
+}
+
+.fog-drift {
+  animation: fog-drift 48s linear infinite;
+}
+
+@keyframes fog-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-8%);
+  }
+}
