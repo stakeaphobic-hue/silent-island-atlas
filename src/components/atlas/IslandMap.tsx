@@ -473,21 +473,18 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             <text
               x={36}
               y={868}
-              fill="var(--color-paper)"
-              fontSize={13}
+              fill="var(--color-subtle-fg)"
+              fontSize={11}
               fontFamily="var(--font-sans)"
               letterSpacing="0.28em"
-              stroke="var(--color-ink)"
-              strokeWidth={4}
-              paintOrder="stroke"
               className="pointer-events-none"
             >
               LONG ISLAND · NORTH SHORE
             </text>
             {ATLAS_LONG_ISLAND.map((t) => {
               const selected = selection.type === "li" && selection.id === t.id;
-              const lx = t.inland ? t.x + 10 : t.x;
-              const ly = t.inland ? t.y + 5 : t.y + 18;
+              const lx = t.inland ? t.x + 8 : t.x;
+              const ly = t.inland ? t.y + 4 : t.y + 12;
               const anchor = t.inland ? "start" : "middle";
               return (
                 <g
@@ -503,7 +500,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                     <circle
                       cx={t.x}
                       cy={t.y}
-                      r={12}
+                      r={9}
                       fill="none"
                       stroke="var(--color-paper)"
                       strokeWidth={1.2}
@@ -512,21 +509,18 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                   <circle
                     cx={t.x}
                     cy={t.y}
-                    r={t.id === "port-jefferson" ? 6.5 : t.inland ? 5 : 5.5}
-                    fill="var(--color-paper)"
-                    stroke="var(--color-ink)"
-                    strokeWidth={1.2}
+                    r={t.id === "port-jefferson" ? 7 : t.inland ? 4.5 : 5}
+                    fill="var(--color-elevated)"
+                    stroke="var(--color-brass)"
+                    strokeWidth={1.15}
                   />
                   <text
                     x={lx}
                     y={ly}
                     textAnchor={anchor}
-                    fill="var(--color-paper)"
-                    fontSize={26}
+                    fill="var(--color-steel)"
+                    fontSize={11}
                     fontFamily="var(--font-display)"
-                    stroke="var(--color-ink)"
-                    strokeWidth={6}
-                    paintOrder="stroke"
                   >
                     {t.name}
                   </text>
