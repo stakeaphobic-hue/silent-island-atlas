@@ -53,16 +53,29 @@ export const CONNECTICUT_LAND =
 export const LONG_ISLAND_LAND =
   "M 0 1008 L 1792 1008 L 1792 896 L 1660 890 L 1520 902 L 1360 894 L 1220 908 L 1124 900 L 1080 896 L 1010 900 L 958 926 L 920 908 L 872 898 L 838 948 L 802 950 L 780 888 L 742 858 L 690 908 L 638 928 L 590 942 L 540 888 L 498 896 L 455 848 L 415 852 L 378 898 L 358 858 L 330 886 L 285 898 L 255 960 L 228 962 L 200 938 L 170 892 L 135 926 L 108 904 L 90 882 L 50 898 L 0 908 Z";
 
-export const ATLAS_SHORE: { id: string; name: string; x: number; y: number }[] = [
-  { id: "easton", name: "Easton", x: 200, y: 26 },
-  { id: "monroe", name: "Monroe", x: 390, y: 20 },
+export type AtlasShorePin = {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  inland?: boolean;
+  kind?: "city" | "town" | "tower";
+  label?: "left" | "right";
+};
+
+export const ATLAS_SHORE: AtlasShorePin[] = [
+  { id: "easton", name: "Easton", x: 200, y: 26, inland: true },
+  { id: "monroe", name: "Monroe", x: 390, y: 20, inland: true },
   { id: "fairfield", name: "Fairfield", x: 340, y: 58 },
-  { id: "trumbull", name: "Trumbull", x: 470, y: 40 },
-  { id: "bridgeport", name: "Bridgeport", x: 588, y: 48 },
-  { id: "shelton", name: "Shelton", x: 760, y: 36 },
+  { id: "trumbull", name: "Trumbull", x: 470, y: 40, inland: true },
+  { id: "bridgeport", name: "Bridgeport", x: 588, y: 48, kind: "city" },
+  { id: "bbc-dvda", name: "BBC DVDA", x: 538, y: 36, kind: "tower", label: "left" },
+  { id: "bbc-dp", name: "BBC DP", x: 618, y: 78, kind: "tower" },
+  { id: "shelton", name: "Shelton", x: 760, y: 36, inland: true },
   { id: "stratford", name: "Stratford", x: 840, y: 58 },
-  { id: "waterbury", name: "Waterbury", x: 700, y: 16 },
-  { id: "new-haven", name: "New Haven", x: 1140, y: 40 },
+  { id: "waterbury", name: "Waterbury", x: 680, y: 14, inland: true },
+  { id: "bwc-dv", name: "BWC DV", x: 792, y: 16, kind: "tower", inland: true },
+  { id: "new-haven", name: "New Haven", x: 1140, y: 40, kind: "city" },
 ];
 
 /** Long Island Sound towns on the existing south strip. No extra land. */
@@ -200,7 +213,7 @@ export const OVERVIEW = {
   name: "Silent Island",
   summary:
     "A forgotten island in Long Island Sound. Three counties, a satellite island, and a history full of gaps.",
-  body: "Silent Island sits in the Long Island Sound like a place the rest of the world spent decades trying to forget. Most maps barely acknowledge it. The fading was never entirely natural.\n\nThe main island is divided into Weirding County (west), Silent County (center), and Eerier County (east). Countess Island — The Gilded Grove — lies off the eastern shore. Shell Beach is the eastern tip of the main island, across the water from Countess.\n\nWartime development left sealed sites. The 1980s brought Mariel boatlift families into the working districts. Later arrivals were placed in camps and detention facilities. New money is arriving from the mainland. The fog feels heavier. The city feels more awake.",
+  body: "Silent Island sits in the Long Island Sound like a place the rest of the world spent decades trying to forget. Most maps barely acknowledge it. The fading was never entirely natural.\n\nThe main island is divided into Weirding County (west), Silent County (center), and Eerier County (east). Countess Island — The Gilded Grove — lies off the eastern shore. Shell Beach is the eastern tip of the main island, across the water from Countess. Downtown Silent City is the BWC DA Tower.\n\nConnecticut is the north shore of this chart: Bridgeport Harbor, the Housatonic, New Haven Harbor. Long Island is the south shore. The Bridgeport–Port Jefferson ferry runs the west water, around the island, not through it. Narragansett Bay is east of this Sound, a different book.\n\nWartime development left sealed sites. The 1980s brought Mariel boatlift families into the working districts. Later arrivals were placed in camps and detention facilities. New money is arriving from the mainland. The fog feels heavier. The city feels more awake.",
 };
 
 export const PLACES: Place[] = [

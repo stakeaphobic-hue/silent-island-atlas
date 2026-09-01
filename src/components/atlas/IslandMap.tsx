@@ -177,18 +177,116 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             />
             <path
               d={CONNECTICUT_LAND}
-              fill="color-mix(in oklab, var(--color-ink) 18%, transparent)"
-              stroke="color-mix(in oklab, var(--color-steel) 40%, transparent)"
-              strokeWidth={1.25}
+              fill="color-mix(in oklab, var(--color-ink) 8%, transparent)"
+              stroke="color-mix(in oklab, var(--color-steel) 55%, transparent)"
+              strokeWidth={1.35}
               pointerEvents="none"
             />
             <path
               d={LONG_ISLAND_LAND}
-              fill="color-mix(in oklab, var(--color-ink) 18%, transparent)"
-              stroke="color-mix(in oklab, var(--color-steel) 40%, transparent)"
-              strokeWidth={1.25}
+              fill="color-mix(in oklab, var(--color-ink) 8%, transparent)"
+              stroke="color-mix(in oklab, var(--color-steel) 55%, transparent)"
+              strokeWidth={1.35}
               pointerEvents="none"
             />
+            <path
+              d="M 40 52 L 1480 48"
+              fill="none"
+              stroke="color-mix(in oklab, var(--color-steel) 40%, transparent)"
+              strokeWidth={1.6}
+              strokeDasharray="10 8"
+              pointerEvents="none"
+            />
+            <text
+              x={56}
+              y={46}
+              fill="var(--color-subtle-fg)"
+              fontSize={10}
+              fontFamily="var(--font-sans)"
+              letterSpacing="0.18em"
+              className="pointer-events-none"
+            >
+              I-95
+            </text>
+            <path
+              d="M 760 36 C 800 70 830 100 848 128"
+              fill="none"
+              stroke="color-mix(in oklab, var(--color-water) 75%, var(--color-ink))"
+              strokeWidth={8}
+              strokeLinecap="round"
+              pointerEvents="none"
+            />
+            <text
+              x={858}
+              y={108}
+              fill="var(--color-subtle-fg)"
+              fontSize={10}
+              fontFamily="var(--font-sans)"
+              letterSpacing="0.14em"
+              className="pointer-events-none"
+            >
+              HOUSATONIC
+            </text>
+            <path
+              d="M 600 96 C 220 280 190 740 810 930"
+              fill="none"
+              stroke="color-mix(in oklab, var(--color-brass) 55%, transparent)"
+              strokeWidth={1.6}
+              strokeDasharray="7 9"
+              pointerEvents="none"
+            />
+            <text
+              x={96}
+              y={520}
+              fill="var(--color-brass)"
+              fillOpacity={0.7}
+              fontSize={11}
+              fontFamily="var(--font-display)"
+              className="pointer-events-none"
+            >
+              Ferry
+            </text>
+            <text
+              x={520}
+              y={122}
+              fill="var(--color-paper)"
+              fillOpacity={0.38}
+              fontSize={11}
+              fontFamily="var(--font-display)"
+              className="pointer-events-none"
+            >
+              Bridgeport Harbor
+            </text>
+            <text
+              x={1080}
+              y={124}
+              fill="var(--color-paper)"
+              fillOpacity={0.38}
+              fontSize={11}
+              fontFamily="var(--font-display)"
+              className="pointer-events-none"
+            >
+              New Haven Harbor
+            </text>
+            <path
+              d="M 270 530 C 520 508 740 528 1000 548 C 1140 562 1260 575 1288 555"
+              fill="none"
+              stroke="color-mix(in oklab, var(--color-steel) 35%, transparent)"
+              strokeWidth={1.5}
+              strokeDasharray="8 7"
+              pointerEvents="none"
+            />
+            <text
+              x={742}
+              y={518}
+              fill="var(--color-subtle-fg)"
+              fontSize={10}
+              fontFamily="var(--font-sans)"
+              letterSpacing="0.18em"
+              className="pointer-events-none"
+            >
+              RT 69
+            </text>
             <text
               x={36}
               y={28}
@@ -201,7 +299,13 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
               THE SHORE · CONNECTICUT
             </text>
             {ATLAS_SHORE.map((t) => {
-              const inland = ["easton", "monroe", "trumbull", "shelton", "waterbury"].includes(t.id);
+              const inland = Boolean(t.inland);
+              const tower = t.kind === "tower";
+              const city = t.kind === "city";
+              const side = t.label ?? (inland || tower ? "right" : "top");
+              const lx = side === "left" ? t.x - 8 : side === "right" ? t.x + 8 : t.x;
+              const ly = side === "top" ? t.y - 10 : t.y + 4;
+              const anchor = side === "left" ? "end" : side === "right" ? "start" : "middle";
               return (
                 <g
                   key={t.id}
@@ -212,20 +316,32 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                   }}
                   onPointerDown={(e) => e.stopPropagation()}
                 >
-                  <circle
-                    cx={t.x}
-                    cy={t.y}
-                    r={t.id === "bridgeport" ? 7 : inland ? 4.5 : 5}
-                    fill="var(--color-elevated)"
-                    stroke="var(--color-brass)"
-                    strokeWidth={1.15}
-                  />
+                  {tower ? (
+                    <rect
+                      x={t.x - 4}
+                      y={t.y - 7}
+                      width={8}
+                      height={14}
+                      fill="var(--color-elevated)"
+                      stroke="var(--color-brass)"
+                      strokeWidth={1.15}
+                    />
+                  ) : (
+                    <circle
+                      cx={t.x}
+                      cy={t.y}
+                      r={city ? 7 : inland ? 4.5 : 5}
+                      fill="var(--color-elevated)"
+                      stroke="var(--color-brass)"
+                      strokeWidth={1.15}
+                    />
+                  )}
                   <text
-                    x={inland ? t.x + 8 : t.x}
-                    y={inland ? t.y + 4 : t.y - 10}
-                    textAnchor={inland ? "start" : "middle"}
+                    x={lx}
+                    y={ly}
+                    textAnchor={anchor}
                     fill="var(--color-steel)"
-                    fontSize={11}
+                    fontSize={tower ? 10 : 11}
                     fontFamily="var(--font-display)"
                   >
                     {t.name}
