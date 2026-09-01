@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BayRouteImport } from './routes/bay'
 import { Route as RosterRouteImport } from './routes/roster'
 import { Route as ShoreRouteImport } from './routes/shore'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BayRoute = BayRouteImport.update({
+  id: '/bay',
+  path: '/bay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RosterRoute = RosterRouteImport.update({
@@ -31,30 +37,34 @@ const ShoreRoute = ShoreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bay': typeof BayRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bay': typeof BayRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bay': typeof BayRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/roster' | '/shore'
+  fullPaths: '/' | '/bay' | '/roster' | '/shore'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/roster' | '/shore'
-  id: '__root__' | '/' | '/roster' | '/shore'
+  to: '/' | '/bay' | '/roster' | '/shore'
+  id: '__root__' | '/' | '/bay' | '/roster' | '/shore'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BayRoute: typeof BayRoute
   RosterRoute: typeof RosterRoute
   ShoreRoute: typeof ShoreRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bay': {
+      id: '/bay'
+      path: '/bay'
+      fullPath: '/bay'
+      preLoaderRoute: typeof BayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roster': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BayRoute: BayRoute,
   RosterRoute: RosterRoute,
   ShoreRoute: ShoreRoute,
 }

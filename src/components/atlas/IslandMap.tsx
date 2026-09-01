@@ -4,6 +4,7 @@ import { Minus, Plus, LocateFixed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type Selection } from "@/components/atlas/Dossier";
 import {
+  ATLAS_LONG_ISLAND,
   ATLAS_SHORE,
   CONNECTICUT_LAND,
   COUNTESS_PATH,
@@ -199,36 +200,65 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             >
               THE SHORE · CONNECTICUT
             </text>
-            {ATLAS_SHORE.map((t) => (
-              <g
-                key={t.id}
-                className="cursor-pointer"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  void navigate({ to: "/shore", search: { town: t.id } });
-                }}
-                onPointerDown={(e) => e.stopPropagation()}
-              >
-                <circle
-                  cx={t.x}
-                  cy={t.y}
-                  r={t.id === "bridgeport" ? 7 : 5}
-                  fill="var(--color-elevated)"
-                  stroke="var(--color-brass)"
-                  strokeWidth={1.15}
-                />
-                <text
-                  x={t.x + (t.id === "waterbury" ? 10 : 0)}
-                  y={t.id === "waterbury" ? t.y + 4 : t.y - 10}
-                  textAnchor={t.id === "waterbury" ? "start" : "middle"}
-                  fill="var(--color-steel)"
-                  fontSize={11}
-                  fontFamily="var(--font-display)"
+            {ATLAS_SHORE.map((t) => {
+              const inland = ["easton", "monroe", "trumbull", "shelton", "waterbury"].includes(t.id);
+              return (
+                <g
+                  key={t.id}
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    void navigate({ to: "/shore", search: { town: t.id } });
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
                 >
-                  {t.name}
-                </text>
-              </g>
-            ))}
+                  <circle
+                    cx={t.x}
+                    cy={t.y}
+                    r={t.id === "bridgeport" ? 7 : inland ? 4.5 : 5}
+                    fill="var(--color-elevated)"
+                    stroke="var(--color-brass)"
+                    strokeWidth={1.15}
+                  />
+                  <text
+                    x={inland ? t.x + 8 : t.x}
+                    y={inland ? t.y + 4 : t.y - 10}
+                    textAnchor={inland ? "start" : "middle"}
+                    fill="var(--color-steel)"
+                    fontSize={11}
+                    fontFamily="var(--font-display)"
+                  >
+                    {t.name}
+                  </text>
+                </g>
+              );
+            })}
+            <g
+              className="cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                void navigate({ to: "/bay" });
+              }}
+              onPointerDown={(e) => e.stopPropagation()}
+            >
+              <rect
+                x="1520"
+                y="18"
+                width="248"
+                height="44"
+                rx="10"
+                fill="var(--color-ink)"
+                stroke="var(--color-brass)"
+                strokeOpacity="0.55"
+                strokeDasharray="4 4"
+              />
+              <text x="1536" y="38" fill="var(--color-brass)" fontSize="13" fontFamily="var(--font-display)">
+                Narragansett Bay →
+              </text>
+              <text x="1536" y="54" fill="var(--color-subtle-fg)" fontSize="10" fontFamily="var(--font-sans)">
+                east of this Sound
+              </text>
+            </g>
             <g clipPath="url(#island-clip)">
               {(
                 [
@@ -255,7 +285,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             </g>
             <text
               x={36}
-              y={942}
+              y={998}
               fill="var(--color-subtle-fg)"
               fontSize={11}
               fontFamily="var(--font-sans)"
@@ -264,6 +294,36 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             >
               LONG ISLAND · NORTH SHORE
             </text>
+            {ATLAS_LONG_ISLAND.map((t) => (
+              <g
+                key={t.id}
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelect({ type: "li", id: t.id });
+                }}
+                onPointerDown={(e) => e.stopPropagation()}
+              >
+                <circle
+                  cx={t.x}
+                  cy={t.y}
+                  r={t.id === "port-jefferson" ? 6 : t.inland ? 4.5 : 5}
+                  fill="var(--color-elevated)"
+                  stroke="var(--color-brass)"
+                  strokeWidth={1.15}
+                />
+                <text
+                  x={t.inland ? t.x + 8 : t.x}
+                  y={t.inland ? t.y + 4 : t.y - 12}
+                  textAnchor={t.inland ? "start" : "middle"}
+                  fill="var(--color-steel)"
+                  fontSize={11}
+                  fontFamily="var(--font-display)"
+                >
+                  {t.name}
+                </text>
+              </g>
+            ))}
             {COUNTIES.map((c) => (
               <text
                 key={c.id}
@@ -291,6 +351,40 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                 ) : null}
               </text>
             ))}
+            {(() => {
+              const tower = PLACES.find((p) => p.id === "bwc-da");
+              if (!tower) return null;
+              const selected = selection.type === "place" && selection.id === "bwc-da";
+              return (
+                <g
+                  className="cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelect({ type: "place", id: "bwc-da" });
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                >
+                  <rect
+                    x={tower.x + 14}
+                    y={tower.y - 86}
+                    width={44}
+                    height={64}
+                    rx={3}
+                    fill="var(--color-ink)"
+                    stroke={selected ? "var(--color-paper)" : "var(--color-brass)"}
+                    strokeWidth={selected ? 1.6 : 1.1}
+                  />
+                  <image
+                    href={asset("/towers/bwc-da.png")}
+                    x={tower.x + 16}
+                    y={tower.y - 84}
+                    width={40}
+                    height={60}
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+              );
+            })()}
             {visible.map((p) => (
               <Marker
                 key={p.id}
@@ -364,7 +458,15 @@ function Marker({
   showLabel: boolean;
   onSelect: () => void;
 }) {
-  const r = place.kind === "city" ? 8 : place.kind === "megablock" ? 5.5 : 4.8;
+  const callout = place.labelX != null && place.labelY != null;
+  const r =
+    place.county === "countess"
+      ? 3.2
+      : place.kind === "city"
+        ? 8
+        : place.kind === "megablock"
+          ? 5.5
+          : 4.8;
   const fill =
     place.kind === "wartime"
       ? "var(--color-danger)"
@@ -375,6 +477,8 @@ function Marker({
           : place.kind === "city" || place.kind === "landmark"
             ? "var(--color-paper)"
             : COUNTY_FILL[place.county];
+  const lx = callout ? place.labelX! : place.x + r + 5;
+  const ly = callout ? place.labelY! : place.y + 4;
 
   return (
     <g
@@ -385,6 +489,16 @@ function Marker({
       }}
       onPointerDown={(e) => e.stopPropagation()}
     >
+      {callout && showLabel ? (
+        <line
+          x1={place.x}
+          y1={place.y}
+          x2={lx}
+          y2={ly}
+          stroke="color-mix(in oklab, var(--color-paper) 45%, transparent)"
+          strokeWidth={1}
+        />
+      ) : null}
       {selected && (
         <circle
           cx={place.x}
@@ -417,8 +531,8 @@ function Marker({
       )}
       {showLabel && (
         <text
-          x={place.x + r + 5}
-          y={place.y + 4}
+          x={lx}
+          y={ly}
           fill="var(--color-paper)"
           fontSize={place.alwaysLabel ? 13 : 11}
           fontFamily="var(--font-sans)"

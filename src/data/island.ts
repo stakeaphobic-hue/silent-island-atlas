@@ -25,6 +25,9 @@ export type Place = {
   tags?: string[];
   families?: number;
   alwaysLabel?: boolean;
+  /** Absolute label position. When set, the name sits here with a leader to the pin. */
+  labelX?: number;
+  labelY?: number;
 };
 
 export type County = {
@@ -45,18 +48,113 @@ export const COUNTESS_PATH =
 
 /** Painted Connecticut land lives in the chart image; this is the clickable coast line. */
 export const CONNECTICUT_LAND =
-  "M 0 0 L 1792 0 L 1792 118 C 1600 88 1420 130 1200 100 C 980 70 820 120 640 92 C 460 64 280 118 120 90 C 50 78 0 100 0 100 Z";
+  "M 0 0 L 1792 0 L 1792 88 L 1720 92 L 1600 84 L 1480 96 L 1360 90 L 1270 102 L 1210 138 L 1172 58 L 1140 58 L 1112 146 L 1085 108 L 1030 96 L 968 122 L 930 74 L 888 70 L 858 128 L 832 152 L 805 118 L 760 92 L 700 102 L 642 132 L 618 64 L 600 62 L 585 128 L 565 82 L 540 108 L 490 90 L 420 96 L 360 86 L 325 104 L 290 78 L 230 94 L 170 86 L 110 98 L 50 90 L 0 96 Z";
 
 export const LONG_ISLAND_LAND =
-  "M 0 1008 L 1792 1008 L 1792 888 C 1600 918 1400 872 1180 900 C 960 928 780 878 600 906 C 420 934 240 888 80 912 C 30 922 0 900 0 900 Z";
+  "M 0 1008 L 1792 1008 L 1792 896 L 1660 890 L 1520 902 L 1360 894 L 1220 908 L 1124 900 L 1080 896 L 1010 900 L 958 926 L 920 908 L 872 898 L 838 948 L 802 950 L 780 888 L 742 858 L 690 908 L 638 928 L 590 942 L 540 888 L 498 896 L 455 848 L 415 852 L 378 898 L 358 858 L 330 886 L 285 898 L 255 960 L 228 962 L 200 938 L 170 892 L 135 926 L 108 904 L 90 882 L 50 898 L 0 908 Z";
 
 export const ATLAS_SHORE: { id: string; name: string; x: number; y: number }[] = [
-  { id: "fairfield", name: "Fairfield", x: 340, y: 52 },
-  { id: "bridgeport", name: "Bridgeport", x: 600, y: 68 },
+  { id: "easton", name: "Easton", x: 200, y: 26 },
+  { id: "monroe", name: "Monroe", x: 390, y: 20 },
+  { id: "fairfield", name: "Fairfield", x: 340, y: 58 },
+  { id: "trumbull", name: "Trumbull", x: 470, y: 40 },
+  { id: "bridgeport", name: "Bridgeport", x: 588, y: 48 },
+  { id: "shelton", name: "Shelton", x: 760, y: 36 },
   { id: "stratford", name: "Stratford", x: 840, y: 58 },
-  { id: "new-haven", name: "New Haven", x: 1140, y: 54 },
-  { id: "waterbury", name: "Waterbury", x: 660, y: 22 },
+  { id: "waterbury", name: "Waterbury", x: 700, y: 16 },
+  { id: "new-haven", name: "New Haven", x: 1140, y: 40 },
 ];
+
+/** Long Island Sound towns on the existing south strip. No extra land. */
+export type AtlasLiTown = {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  inland?: boolean;
+  summary: string;
+  body: string;
+};
+
+export const ATLAS_LONG_ISLAND: AtlasLiTown[] = [
+  {
+    id: "glen-cove",
+    name: "Glen Cove",
+    x: 108,
+    y: 912,
+    summary: "North shore, Nassau. Faces the western Sound toward Stamford and Greenwich.",
+    body: "City on a peninsula of coves. Gold Coast estates and a working harbor. Off this chronicle — the far shore of the Sound, west of the Bridgeport window.",
+  },
+  {
+    id: "oyster-bay",
+    name: "Oyster Bay",
+    x: 232,
+    y: 974,
+    summary: "North shore. Due north of Hicksville. Faces Norwalk and Westport.",
+    body: "Town and harbor on the Sound. Roosevelt country on paper. The water here is the same Sound that wets Silent Island; the book is not.",
+  },
+  {
+    id: "huntington",
+    name: "Huntington",
+    x: 378,
+    y: 914,
+    summary: "North shore, facing Fairfield. Huntington Bay opens north into the Sound.",
+    body: "Large town, long harbor, the western working shore of this window. Across the water from Fairfield. Not a Silent Island court.",
+  },
+  {
+    id: "northport",
+    name: "Northport",
+    x: 498,
+    y: 910,
+    summary: "Harbor village west of the Bridgeport–Port Jefferson line.",
+    body: "A deep pocket of the Sound. Boat yards, a main street that still pretends it is a village. Faces the water between Fairfield and Bridgeport.",
+  },
+  {
+    id: "stony-brook",
+    name: "Stony Brook",
+    x: 640,
+    y: 942,
+    summary: "Harbor and university village, just west of Port Jefferson.",
+    body: "Setauket and Stony Brook share this bight. The Sound is the north wall. Silent Island is a rumor over that wall.",
+  },
+  {
+    id: "port-jefferson",
+    name: "Port Jefferson",
+    x: 810,
+    y: 964,
+    summary: "Ferry town. The real boat to Bridgeport lands here.",
+    body: "The Bridgeport–Port Jefferson ferry is the ordinary crossing of this Sound. Harbor, yards, a village that faces Stratford and the east side of Bridgeport. This is the Long Island door. Silent Island is not on the timetable.",
+  },
+  {
+    id: "mount-sinai",
+    name: "Mount Sinai",
+    x: 960,
+    y: 942,
+    summary: "Harbor hamlet east of Port Jefferson, still on the Sound.",
+    body: "A small north-shore harbor. The next bight after Port Jefferson. Faces the water toward Milford and the west edge of the New Haven window.",
+  },
+  {
+    id: "shoreham",
+    name: "Shoreham",
+    x: 1124,
+    y: 912,
+    summary: "North shore, roughly south of New Haven across the Sound.",
+    body: "Hamlet and a long beach of the Sound. The plant inland is a different story. From here the Connecticut lights are New Haven’s.",
+  },
+  {
+    id: "hicksville",
+    name: "Hicksville",
+    x: 268,
+    y: 996,
+    inland: true,
+    summary: "Inland Nassau. Not on the Sound. South of Oyster Bay, at the south edge of this chart.",
+    body: "Hempstead Plain. Rail, lots, and a name that does not touch salt water. Due south of Oyster Bay — left on the south edge of the painted strip. No new land. Off this chronicle except as a mainland fact.",
+  },
+];
+
+export function liTown(id: string) {
+  return ATLAS_LONG_ISLAND.find((t) => t.id === id);
+}
 
 export const COUNTIES: County[] = [
   {
@@ -75,7 +173,7 @@ export const COUNTIES: County[] = [
     x: 700,
     y: 405,
     summary: "Silent City at the heart. Streets that change with the hour.",
-    body: "Silent County occupies the center of the island and contains Silent City. Art deco stands beside brutalist concrete and aging industry. The streets are often wet when it has not rained. Fog from the Sound lingers too long. People speak of buildings that rearrange overnight and of a city that swallows history — and sometimes people — without a trace. Route 69 runs the island’s spine through this county.",
+    body: "Silent County occupies the center of the island and contains Silent City. Art deco stands beside brutalist concrete and aging industry. The streets are often wet when it has not rained. Fog from the Sound lingers too long. People speak of buildings that rearrange overnight and of a city that swallows history — and sometimes people — without a trace. Route 69 runs the island’s spine through this county.\n\nThree MegaBlocks (one thousand families each) stand in Silent City, Smokeport, and Millhaven. Downtown is the BWC DA Tower.",
   },
   {
     id: "eerier",
@@ -90,8 +188,8 @@ export const COUNTIES: County[] = [
     id: "countess",
     name: "Countess Island",
     short: "Gilded Grove",
-    x: 1360,
-    y: 400,
+    x: 1418,
+    y: 348,
     summary: "The Gilded Grove: estates on one side, MegaBlocks on the other.",
     body: "Countess Island, collectively The Gilded Grove, sits northeast of Shell Beach. Two worlds rarely mix. The Gilded Shroud is old money behind high walls and iron gates — Victorian-Gothic and Beaux-Arts mansions, private cemeteries, unused wings. Opposite it, three MegaBlocks — Shadow Bottom, Struggler’s Spire, and The Modest Veil — rise over dry docks and plants, each built to house two thousand families. Modest streets form a buffer between them.",
   },
@@ -576,10 +674,12 @@ export const PLACES: Place[] = [
     name: "The Gilded Shroud",
     kind: "landmark",
     county: "countess",
-    x: 1375,
-    y: 450,
+    x: 1368,
+    y: 445,
     layer: "landmarks",
     alwaysLabel: true,
+    labelX: 1588,
+    labelY: 392,
     summary: "Old estates behind high walls. Unused wings. Locked gates after dusk.",
     body: "The wealthy, secluded side of Countess Island. Victorian-Gothic and Beaux-Arts mansions, widow’s walks, long gravel drives. Families trace contracts to the 1930s and ’40s — some to the Manhattan Project’s shadow economy. Certain floors are left unused for years. No one asks why. Outsiders are tolerated for business and never welcomed.",
     tags: ["Old money"],
@@ -613,10 +713,12 @@ export const PLACES: Place[] = [
     name: "The Modest Veil",
     kind: "megablock",
     county: "countess",
-    x: 1505,
-    y: 440,
+    x: 1492,
+    y: 438,
     layer: "megablocks",
     alwaysLabel: true,
+    labelX: 1598,
+    labelY: 438,
     summary: "Highest of the three Countess towers. Quiet performance of almost-making-it.",
     body: "Foremen, skilled trades, lower clerks. Cleaner corridors, slightly larger apartments, defensive pride. Behind doors: maintenance fees, shrinking rations, and the fear of falling to Struggler’s Spire. Two thousand families.",
     families: 2000,
@@ -627,10 +729,12 @@ export const PLACES: Place[] = [
     name: "Struggler’s Spire",
     kind: "megablock",
     county: "countess",
-    x: 1515,
-    y: 495,
+    x: 1498,
+    y: 488,
     layer: "megablocks",
     alwaysLabel: true,
+    labelX: 1608,
+    labelY: 498,
     summary: "Dock workers, welders, shift laborers. Sirens for shift change.",
     body: "The middle tower in height and in reputation. Walls layered with graffiti, union notices, and faded photographs. Arguments are loud. Laughter is louder. Two thousand families who keep the dry docks breathing.",
     families: 2000,
@@ -641,10 +745,12 @@ export const PLACES: Place[] = [
     name: "Shadow Bottom",
     kind: "megablock",
     county: "countess",
-    x: 1475,
-    y: 535,
+    x: 1464,
+    y: 528,
     layer: "megablocks",
     alwaysLabel: true,
+    labelX: 1592,
+    labelY: 548,
     summary: "Lowest tower. Damp concrete, boiled cabbage, the drop.",
     body: "Soot-stained. Lights flicker on the lower levels. Residents speak of “the drop” — once you fall this far, climbing out is almost impossible. Solidarity persists: shared meals, watched children, warnings about the deeper maintenance shafts. Two thousand families.",
     families: 2000,
@@ -672,6 +778,7 @@ export const PLACES: Place[] = [
     x: 462,
     y: 532,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Weirding MegaBlock. One thousand families.",
     body: "Spread, not clustered — one of three in Weirding County. Built over Fogrest. Corridor culture is hushed. The fog sits on the roof.",
     families: 1000,
@@ -684,6 +791,7 @@ export const PLACES: Place[] = [
     x: 516,
     y: 452,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Weirding MegaBlock over the old ironworks.",
     body: "A thousand families stacked above sealed wartime basements. Horns from below still keep a shift that is not on any roster.",
     families: 1000,
@@ -696,6 +804,7 @@ export const PLACES: Place[] = [
     x: 526,
     y: 604,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Weirding MegaBlock. South interior.",
     body: "Union memory in a vertical town. Lower levels take water. A thousand families.",
     families: 1000,
@@ -708,6 +817,7 @@ export const PLACES: Place[] = [
     x: 1096,
     y: 466,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Eerier MegaBlock on the cliff.",
     body: "Looks inland toward a plant that was sealed rather than destroyed. A thousand families. The hum is audible on still nights.",
     families: 1000,
@@ -720,6 +830,7 @@ export const PLACES: Place[] = [
     x: 1016,
     y: 578,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Eerier MegaBlock over the slips.",
     body: "Harbor stack housing. A thousand families. The official shipyard and the unofficial inland yards share a skyline.",
     families: 1000,
@@ -732,9 +843,54 @@ export const PLACES: Place[] = [
     x: 1056,
     y: 638,
     layer: "megablocks",
+    alwaysLabel: true,
     summary: "Eerier MegaBlock, south-east.",
     body: "A thousand families. Plant smell on the lower floors. Closer in spirit to Struggler’s Spire than to the Modest Veil.",
     families: 1000,
+  },
+  {
+    id: "mb-silent-city",
+    name: "Silent City MegaBlock",
+    kind: "megablock",
+    county: "silent",
+    x: 702,
+    y: 558,
+    layer: "megablocks",
+    alwaysLabel: true,
+    labelX: 560,
+    labelY: 575,
+    summary: "Silent County MegaBlock. One thousand families in the city’s south wards.",
+    body: "Stacked housing off downtown. Art deco lobby, brutalist shaft. The BWC DA Tower is a different building — this one is where the city actually lives. Corridor maps go stale. A thousand families.",
+    families: 1000,
+    tags: ["MegaBlock"],
+  },
+  {
+    id: "mb-smokeport",
+    name: "Smokeport MegaBlock",
+    kind: "megablock",
+    county: "silent",
+    x: 858,
+    y: 642,
+    layer: "megablocks",
+    alwaysLabel: true,
+    summary: "Silent County MegaBlock over the south stacks.",
+    body: "A thousand families in the stack weather. Ash on the sills matches Ashwick’s. Night shift still clocks in at plants that are closed on paper.",
+    families: 1000,
+    tags: ["MegaBlock"],
+  },
+  {
+    id: "mb-millhaven",
+    name: "Millhaven MegaBlock",
+    kind: "megablock",
+    county: "silent",
+    x: 748,
+    y: 618,
+    layer: "megablocks",
+    alwaysLabel: true,
+    summary: "Silent County MegaBlock on the mill lots.",
+    body: "Raised over cold textile floors. The camp is next door. A thousand families who were supposed to be temporary and were not.",
+    families: 1000,
+    tags: ["MegaBlock"],
   },
 
   // Wartime

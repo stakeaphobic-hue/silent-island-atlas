@@ -28,8 +28,8 @@ export function AtlasApp() {
 
   useEffect(() => {
     setSelection(selectionFromSearch(search));
-    if (search.place || search.county || search.front) setMobileOpen(true);
-  }, [search.place, search.county, search.front, search.view]);
+    if (search.place || search.county || search.front || search.li) setMobileOpen(true);
+  }, [search.place, search.county, search.front, search.view, search.li]);
 
   const layerList = useMemo(() => LAYERS, []);
 
@@ -50,7 +50,9 @@ export function AtlasApp() {
           ? { place: next.id }
           : next.type === "county"
             ? { county: next.id }
-            : {},
+            : next.type === "li"
+              ? { li: next.id }
+              : {},
       replace: true,
     });
   }
@@ -189,6 +191,7 @@ function selectionFromSearch(search: {
   county?: CountyId;
   view?: "fronts";
   front?: string;
+  li?: string;
 }): Selection {
   if (search.view === "fronts") {
     if (search.front && frontById(search.front)) return { type: "front", id: search.front };
@@ -196,5 +199,6 @@ function selectionFromSearch(search: {
   }
   if (search.place) return { type: "place", id: search.place };
   if (search.county) return { type: "county", id: search.county };
+  if (search.li) return { type: "li", id: search.li };
   return { type: "overview" };
 }

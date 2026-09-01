@@ -82,6 +82,9 @@ export function ShoreApp() {
               void navigate({ to: "/" });
             }}
             onNewYork={() => select({ type: "new-york" })}
+            onBay={() => {
+              void navigate({ to: "/bay" });
+            }}
           />
         </div>
 

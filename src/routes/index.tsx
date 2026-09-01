@@ -9,6 +9,7 @@ export type ChartSearch = {
   county?: CountyId;
   view?: "fronts";
   front?: string;
+  li?: string;
 };
 
 export const Route = createFileRoute("/")({
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/")({
         : undefined,
     view: raw.view === "fronts" ? "fronts" : undefined,
     front: typeof raw.front === "string" ? raw.front : undefined,
+    li: typeof raw.li === "string" ? raw.li : undefined,
   }),
   component: Home,
 });
