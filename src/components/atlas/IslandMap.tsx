@@ -34,13 +34,37 @@ const COUNTY_FILL: Record<CountyId, string> = {
   countess: "var(--color-countess)",
 };
 
-const K_MIN = 0.85;
-const K_MAX = 4.2;
+/** Mapbox-style zoom: scale = 2^z. z = 0 is the fitted chart. */
+const Z_MIN = -0.25;
+const Z_MAX = 2;
+const Z_FIT = 0;
+
+function clampZ(z: number) {
+  return Math.min(Z_MAX, Math.max(Z_MIN, z));
+}
+function scaleOf(z: number) {
+  return 2 ** z;
+}
+
+type Cam = { x: number; y: number; z: number };
+
+function zoomAround(c: Cam, mx: number, my: number, zNext: number): Cam {
+  const z = clampZ(zNext);
+  const ratio = scaleOf(z) / scaleOf(c.z);
+  return {
+    z,
+    x: mx - (mx - c.x) * ratio,
+    y: my - (my - c.y) * ratio,
+  };
+}
 
 export function IslandMap({ selection, onSelect, layers }: Props) {
   const navigate = useNavigate();
   const frameRef = useRef<HTMLDivElement>(null);
-  const [cam, setCam] = useState({ x: 0, y: 0, k: 1 });
+  const [cam, setCam] = useState<Cam>({ x: 0, y: 0, z: Z_FIT });
+  const camRef = useRef(cam);
+  camRef.current = cam;
+  const easeRef = useRef<number | null>(null);
   const drag = useRef<{
     px: number;
     py: number;
@@ -49,45 +73,66 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     id: number;
   } | null>(null);
 
-  const zoomAt = useCallback((clientX: number, clientY: number, factor: number) => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const rect = frame.getBoundingClientRect();
-    const mx = clientX - rect.left;
-    const my = clientY - rect.top;
-    setCam((c) => {
-      const k = Math.min(K_MAX, Math.max(K_MIN, c.k * factor));
-      const ratio = k / c.k;
-      return {
-        k,
-        x: mx - (mx - c.x) * ratio,
-        y: my - (my - c.y) * ratio,
-      };
-    });
+  const k = scaleOf(cam.z);
+
+  const easeTo = useCallback((next: Cam, ms = 280) => {
+    const from = camRef.current;
+    const t0 = performance.now();
+    if (easeRef.current) cancelAnimationFrame(easeRef.current);
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / ms);
+      const e = 1 - (1 - t) ** 3;
+      setCam({
+        x: from.x + (next.x - from.x) * e,
+        y: from.y + (next.y - from.y) * e,
+        z: from.z + (next.z - from.z) * e,
+      });
+      if (t < 1) easeRef.current = requestAnimationFrame(tick);
+      else easeRef.current = null;
+    };
+    easeRef.current = requestAnimationFrame(tick);
   }, []);
 
-  const framePoint = useCallback((vx: number, vy: number, k = 2.4) => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const { width, height } = frame.getBoundingClientRect();
-    if (width < 8 || height < 8) return;
-    const s = Math.min(width / MAP_W, height / MAP_H);
-    const px = (width - MAP_W * s) / 2 + vx * s;
-    const py = (height - MAP_H * s) / 2 + vy * s;
-    const kk = Math.min(K_MAX, Math.max(K_MIN, k));
-    setCam({
-      k: kk,
-      x: width / 2 - px * kk,
-      y: height / 2 - py * kk,
-    });
-  }, []);
+  const zoomAt = useCallback(
+    (clientX: number, clientY: number, dz: number, ease = false) => {
+      const frame = frameRef.current;
+      if (!frame) return;
+      const rect = frame.getBoundingClientRect();
+      const mx = clientX - rect.left;
+      const my = clientY - rect.top;
+      const next = zoomAround(camRef.current, mx, my, camRef.current.z + dz);
+      if (ease) easeTo(next);
+      else setCam(next);
+    },
+    [easeTo],
+  );
+
+  const framePoint = useCallback(
+    (vx: number, vy: number, z = 1.38) => {
+      const frame = frameRef.current;
+      if (!frame) return;
+      const { width, height } = frame.getBoundingClientRect();
+      if (width < 8 || height < 8) return;
+      const s = Math.min(width / MAP_W, height / MAP_H);
+      const px = (width - MAP_W * s) / 2 + vx * s;
+      const py = (height - MAP_H * s) / 2 + vy * s;
+      const zz = clampZ(z);
+      const kk = scaleOf(zz);
+      easeTo({
+        z: zz,
+        x: width / 2 - px * kk,
+        y: height / 2 - py * kk,
+      });
+    },
+    [easeTo],
+  );
 
   useEffect(() => {
     const el = frameRef.current;
     if (!el) return;
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      zoomAt(e.clientX, e.clientY, e.deltaY > 0 ? 0.9 : 1.12);
+      zoomAt(e.clientX, e.clientY, -(e.deltaY / 120) * 0.25);
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
@@ -97,7 +142,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     if (selection.type !== "li") return;
     const t = ATLAS_LONG_ISLAND.find((p) => p.id === selection.id);
     if (!t) return;
-    const id = requestAnimationFrame(() => framePoint(t.x, t.y, 2.6));
+    const id = requestAnimationFrame(() => framePoint(t.x, t.y, 1.38));
     return () => cancelAnimationFrame(id);
   }, [selection, framePoint]);
 
@@ -122,7 +167,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     selection.type === "place" ? PLACES.find((p) => p.id === selection.id) : undefined;
   const selectedCounty = selection.type === "county" ? selection.id : selectedPlace?.county;
   const visible = PLACES.filter((p) => layers[p.layer]);
-  const showTownLabels = cam.k >= 1.2;
+  const showTownLabels = cam.z >= 0.25;
 
   return (
     <div className="relative h-full min-h-0 overflow-hidden bg-ink">
@@ -133,15 +178,14 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        onDoubleClick={() => {
-          setCam({ x: 0, y: 0, k: 1 });
-          onSelect({ type: "overview" });
+        onDoubleClick={(e) => {
+          zoomAt(e.clientX, e.clientY, e.shiftKey ? -1 : 1, true);
         }}
       >
         <div
           className="absolute inset-0 will-change-transform"
           style={{
-            transform: `translate(${cam.x}px, ${cam.y}px) scale(${cam.k})`,
+            transform: `translate(${cam.x}px, ${cam.y}px) scale(${k})`,
             transformOrigin: "0 0",
           }}
         >
@@ -577,7 +621,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           onClick={() => {
             const r = frameRef.current?.getBoundingClientRect();
             if (!r) return;
-            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.25);
+            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1, true);
           }}
         >
           <Plus />
@@ -589,7 +633,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           onClick={() => {
             const r = frameRef.current?.getBoundingClientRect();
             if (!r) return;
-            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 0.8);
+            zoomAt(r.left + r.width / 2, r.top + r.height / 2, -1, true);
           }}
         >
           <Minus />
@@ -598,12 +642,12 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           variant="secondary"
           size="icon-sm"
           aria-label="Reset view"
-          onClick={() => setCam({ x: 0, y: 0, k: 1 })}
+          onClick={() => easeTo({ x: 0, y: 0, z: Z_FIT })}
         >
           <LocateFixed />
         </Button>
         <p className="rounded-md bg-elevated px-2 py-1 text-center text-[10px] tracking-wide text-muted tabular-nums shadow-border">
-          {Math.round(cam.k * 100)}%
+          z {cam.z.toFixed(1)} · {Math.round(k * 100)}%
         </p>
       </div>
 
