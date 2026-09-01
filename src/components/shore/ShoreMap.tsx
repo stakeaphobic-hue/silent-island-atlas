@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { ATLAS_LONG_ISLAND } from "@/data/island";
 import { SHORE_TOWNS, type ShoreTown } from "@/data/shore";
+import { cn } from "@/lib/utils";
 
 export function ShoreMap({
   selected,
@@ -248,6 +249,28 @@ export function ShoreMap({
           <TownNode key={t.id} town={t} active={selected === t.id} onSelect={onSelect} />
         ))}
       </svg>
+
+      <div className="absolute inset-x-0 bottom-14 z-10 border-t border-border bg-ink/95 px-3 py-2 lg:bottom-0">
+        <p className="text-[10px] font-medium tracking-widest text-muted uppercase">
+          Long Island · North Shore
+        </p>
+        <div className="mt-1 flex gap-1 overflow-x-auto">
+          {ATLAS_LONG_ISLAND.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => {
+                void navigate({ to: "/", search: { li: t.id } });
+              }}
+              className={cn(
+                "h-9 shrink-0 rounded-full px-3 text-xs text-paper hover:bg-subtle",
+              )}
+            >
+              {t.name}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -19,7 +19,7 @@ import {
   type LayerId,
   type Place,
 } from "@/data/island";
-import { asset } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 
 type Props = {
   selection: Selection;
@@ -451,10 +451,10 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
                     y={ly}
                     textAnchor={anchor}
                     fill="var(--color-paper)"
-                    fontSize={14}
+                    fontSize={26}
                     fontFamily="var(--font-display)"
                     stroke="var(--color-ink)"
-                    strokeWidth={4}
+                    strokeWidth={6}
                     paintOrder="stroke"
                   >
                     {t.name}
@@ -580,6 +580,30 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
       <p className="absolute left-3 top-3 max-w-[13rem] rounded-xl bg-elevated/90 px-3 py-2 text-xs text-muted shadow-border">
         Drag to pan. Scroll to zoom. Click a town.
       </p>
+
+      <div className="absolute inset-x-0 bottom-14 z-10 border-t border-border bg-ink/95 px-3 py-2 lg:bottom-0">
+        <p className="text-[10px] font-medium tracking-widest text-muted uppercase">
+          Long Island · North Shore
+        </p>
+        <div className="mt-1 flex gap-1 overflow-x-auto">
+          {ATLAS_LONG_ISLAND.map((t) => {
+            const on = selection.type === "li" && selection.id === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => onSelect({ type: "li", id: t.id })}
+                className={cn(
+                  "h-9 shrink-0 rounded-full px-3 text-xs text-paper hover:bg-subtle",
+                  on && "bg-paper text-ink hover:bg-paper hover:text-ink",
+                )}
+              >
+                {t.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
