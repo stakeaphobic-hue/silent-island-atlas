@@ -34,6 +34,9 @@ const COUNTY_FILL: Record<CountyId, string> = {
   countess: "var(--color-countess)",
 };
 
+const K_MIN = 0.85;
+const K_MAX = 4.2;
+
 export function IslandMap({ selection, onSelect, layers }: Props) {
   const navigate = useNavigate();
   const frameRef = useRef<HTMLDivElement>(null);
@@ -53,13 +56,29 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     const mx = clientX - rect.left;
     const my = clientY - rect.top;
     setCam((c) => {
-      const k = Math.min(4.2, Math.max(1, c.k * factor));
+      const k = Math.min(K_MAX, Math.max(K_MIN, c.k * factor));
       const ratio = k / c.k;
       return {
         k,
         x: mx - (mx - c.x) * ratio,
         y: my - (my - c.y) * ratio,
       };
+    });
+  }, []);
+
+  const framePoint = useCallback((vx: number, vy: number, k = 2.4) => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    const { width, height } = frame.getBoundingClientRect();
+    if (width < 8 || height < 8) return;
+    const s = Math.min(width / MAP_W, height / MAP_H);
+    const px = (width - MAP_W * s) / 2 + vx * s;
+    const py = (height - MAP_H * s) / 2 + vy * s;
+    const kk = Math.min(K_MAX, Math.max(K_MIN, k));
+    setCam({
+      k: kk,
+      x: width / 2 - px * kk,
+      y: height / 2 - py * kk,
     });
   }, []);
 
@@ -73,6 +92,14 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   }, [zoomAt]);
+
+  useEffect(() => {
+    if (selection.type !== "li") return;
+    const t = ATLAS_LONG_ISLAND.find((p) => p.id === selection.id);
+    if (!t) return;
+    const id = requestAnimationFrame(() => framePoint(t.x, t.y, 2.6));
+    return () => cancelAnimationFrame(id);
+  }, [selection, framePoint]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (e.button !== 0) return;
@@ -95,13 +122,13 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
     selection.type === "place" ? PLACES.find((p) => p.id === selection.id) : undefined;
   const selectedCounty = selection.type === "county" ? selection.id : selectedPlace?.county;
   const visible = PLACES.filter((p) => layers[p.layer]);
-  const showTownLabels = cam.k > 1.45;
+  const showTownLabels = cam.k >= 1.2;
 
   return (
     <div className="relative h-full min-h-0 overflow-hidden bg-ink">
       <div
         ref={frameRef}
-        className="absolute inset-0 touch-none overflow-hidden"
+        className="absolute inset-0 bottom-[7.5rem] touch-none overflow-hidden lg:bottom-[4.75rem]"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -550,7 +577,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           onClick={() => {
             const r = frameRef.current?.getBoundingClientRect();
             if (!r) return;
-            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.2);
+            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.25);
           }}
         >
           <Plus />
@@ -562,7 +589,7 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
           onClick={() => {
             const r = frameRef.current?.getBoundingClientRect();
             if (!r) return;
-            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 0.84);
+            zoomAt(r.left + r.width / 2, r.top + r.height / 2, 0.8);
           }}
         >
           <Minus />
@@ -575,6 +602,9 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
         >
           <LocateFixed />
         </Button>
+        <p className="rounded-md bg-elevated px-2 py-1 text-center text-[10px] tracking-wide text-muted tabular-nums shadow-border">
+          {Math.round(cam.k * 100)}%
+        </p>
       </div>
 
       <p className="absolute left-3 top-3 max-w-[13rem] rounded-xl bg-elevated/90 px-3 py-2 text-xs text-muted shadow-border">
