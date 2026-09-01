@@ -22,7 +22,7 @@ export type ShoreTown = {
 export const SHORE_OVERVIEW = {
   name: "The Shore",
   summary: "Bridgeport and the towns it bleeds into — East Fairfield, Waterbury inland, New Haven as its own city.",
-  body: "Season 0 drives these streets. Silent Island sits in the Sound — a different book that this shore points at, not a ninth town.\n\nTwo BBC needles stand in Bridgeport. BWC DV stands in Waterbury. BWC DA lives on the Gilded Shroud. People who say “BBC DA” mean the Midtown HQ’s Digital Arts name — same envelope as BBC DVDA, not a fourth Bridgeport building.",
+  body: "Season 0 drives these streets. Silent Island sits in the Sound — a different book that this shore points at, not a ninth town.\n\nTwo BBC needles stand in Bridgeport. BWC DV stands in Waterbury. BWC DA lives downtown Silent City. People who say “BBC DA” mean the Midtown HQ’s Digital Arts name — same envelope as BBC DVDA, not a fourth Bridgeport building.",
 };
 
 export const SHORE_TOWNS: ShoreTown[] = [
@@ -128,7 +128,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     label: "right",
     parent: "bridgeport",
     summary: "The old airship tower. Downtown Park. 2,666 ft. Not the media HQ.",
-    body: "Bridgeport Business Center of Downtown Park. The original needle: 2,666 feet of basalt-black art-deco, 1950s Masonic civic prestige, a Tura limestone pyramid that drinks moonlight. No neon. No BBC DVDA mark.\n\nBuilt as an airship port. Traffic never came. The gantries are sealed; the lights stay on. Ownership and present function are open on purpose.\n\nThis is not BBC DVDA. The Midtown HQ is shorter, branded, and purple. This is not BWC DA — that tower is on the Gilded Shroud, Silent Island, and has a docking ring instead of a pyramid.",
+    body: "Bridgeport Business Center of Downtown Park. The original needle: 2,666 feet of basalt-black art-deco, 1950s Masonic civic prestige, a Tura limestone pyramid that drinks moonlight. No neon. No BBC DVDA mark.\n\nBuilt as an airship port. Traffic never came. The gantries are sealed; the lights stay on. Ownership and present function are open on purpose.\n\nThis is not BBC DVDA. The Midtown HQ is shorter, branded, and purple. This is not BWC DA — that tower is downtown Silent City on Silent Island, and has a docking ring instead of a pyramid.",
     tags: ["Tower", "Downtown", "2,666 ft", "Airship"],
     blanks: ["Who pays the bills. Who walks the upper floors."],
     people: [],
@@ -145,7 +145,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     parent: "bridgeport",
     image: "/towers/bbc-dvda.png",
     summary: "Midtown media HQ. 1,666 ft. Purple neon. The Empire’s public face.",
-    body: "Bridgeport Bulletin Correspondance Divine Vogue Digital Arts. Completed July 6. Live studios for The Red Room, Crash Report, Midnight Feed, Dominion Hour. Talent floors, uncut-masters, the brand that the rest of the shore cannot turn off.\n\nPeople say “BBC DA.” DA is Digital Arts — the same Midtown envelope, not a second needle and not the island tower. BWC DA is Bedlam Woe on the Gilded Shroud. BWC DV is Bedlam Woe’s Divine Vogue building in Waterbury — same two letters, different corporation, different city. BBC DP is the older Downtown Park airship tower, two hundred feet taller, no neon.\n\nCrown left undefined so it cannot be confused with DP’s Tura pyramid. Control of the Empire remains ???.",
+    body: "Bridgeport Bulletin Correspondance Divine Vogue Digital Arts. Completed July 6. Live studios for The Red Room, Crash Report, Midnight Feed, Dominion Hour. Talent floors, uncut-masters, the brand that the rest of the shore cannot turn off.\n\nPeople say “BBC DA.” DA is Digital Arts — the same Midtown envelope, not a second needle and not the island tower. BWC DA is Bedlam Woe in Silent City. BWC DV is Bedlam Woe’s Divine Vogue building in Waterbury — same two letters, different corporation, different city. BBC DP is the older Downtown Park airship tower, two hundred feet taller, no neon.\n\nCrown left undefined so it cannot be confused with DP’s Tura pyramid. Control of the Empire remains ???.",
     tags: ["Tower", "BBC DA", "Midtown", "1,666 ft"],
     blanks: ["Who actually controls the Empire."],
     people: [
@@ -209,7 +209,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     label: "right",
     parent: "waterbury",
     summary: "Bedlam Woe · Divine Vogue. Waterbury. Not the island tower, not BBC.",
-    body: "Bedlam Woe Corporation Divine Vogue. The Brass City needle. DV is Divine Vogue — the same two letters as the Midtown media brand, a different corporation.\n\nThis is not BWC DA. Delta Atlantic is on the Gilded Shroud, Silent Island: 2,666 ft, docking ring, UAP. This is not BBC DVDA. That is Bridgeport Bulletin’s 1,666-ft purple HQ in Midtown.\n\nHeight, crown, and what the floors actually do are not in the packet. Do not copy the island specs onto this building to look finished.",
+    body: "Bedlam Woe Corporation Divine Vogue. The Brass City needle. DV is Divine Vogue — the same two letters as the Midtown media brand, a different corporation.\n\nThis is not BWC DA. Delta Atlantic is downtown Silent City: 2,666 ft, docking ring, UAP. This is not BBC DVDA. That is Bridgeport Bulletin’s 1,666-ft purple HQ in Midtown.\n\nHeight, crown, and what the floors actually do are not in the packet. Do not copy the island specs onto this building to look finished.",
     tags: ["Tower", "BWC", "Divine Vogue", "Waterbury"],
     blanks: ["Height. Crown. Who occupies it. Whether Holy Land can see it from the hill."],
     people: [],

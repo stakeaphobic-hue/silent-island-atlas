@@ -10,6 +10,7 @@ import {
   COUNTIES,
   COUNTY_SPLITS,
   ISLAND_PATH,
+  LONG_ISLAND_LAND,
   MAP_H,
   MAP_W,
   PLACES,
@@ -175,9 +176,16 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
             />
             <path
               d={CONNECTICUT_LAND}
-              fill="color-mix(in oklab, var(--color-ink) 72%, var(--color-water))"
-              stroke="color-mix(in oklab, var(--color-steel) 55%, transparent)"
-              strokeWidth={1.5}
+              fill="color-mix(in oklab, var(--color-ink) 18%, transparent)"
+              stroke="color-mix(in oklab, var(--color-steel) 40%, transparent)"
+              strokeWidth={1.25}
+              pointerEvents="none"
+            />
+            <path
+              d={LONG_ISLAND_LAND}
+              fill="color-mix(in oklab, var(--color-ink) 18%, transparent)"
+              stroke="color-mix(in oklab, var(--color-steel) 40%, transparent)"
+              strokeWidth={1.25}
               pointerEvents="none"
             />
             <text
@@ -246,14 +254,15 @@ export function IslandMap({ selection, onSelect, layers }: Props) {
               ))}
             </g>
             <text
-              x={620}
-              y={940}
-              fill="var(--color-muted)"
-              fontSize={16}
+              x={36}
+              y={942}
+              fill="var(--color-subtle-fg)"
+              fontSize={11}
               fontFamily="var(--font-sans)"
-              letterSpacing="0.32em"
+              letterSpacing="0.28em"
+              className="pointer-events-none"
             >
-              LONG ISLAND
+              LONG ISLAND · NORTH SHORE
             </text>
             {COUNTIES.map((c) => (
               <text

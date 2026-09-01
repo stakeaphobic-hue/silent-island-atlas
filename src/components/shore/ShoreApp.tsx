@@ -289,7 +289,7 @@ function ShoreDossier({
       </div>
 
       <div className="px-5 py-3 text-xs text-subtle-fg">
-        BBC DA is Digital Arts — same Midtown HQ as DVDA. BWC DV is Waterbury. BWC DA is the island.
+        BBC DA is Digital Arts — same Midtown HQ as DVDA. BWC DV is Waterbury. BWC DA is downtown Silent City.
       </div>
     </aside>
   );
