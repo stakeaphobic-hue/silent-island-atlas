@@ -68,16 +68,17 @@ export const FRONTS: Front[] = [
     x: 400,
     y: 430,
     summary: "Toxic Noddism. An 11-part ritual in sacred geometry, slow-burn into Season 1.",
-    body: "Mostly vampires, originating on Silent Island. They believe Caine sleeps under the city and that they can wake him. The Watchers built them as a pressure valve. That valve is no longer under control.\n\nComponent 1 of 11 is done: the 76th Precinct, 2026-05-12. Forty-five actual dead. Sixty-six bodies planted. Public story: seventy-six, no survivors.",
+    body: "Mostly vampires, originating on Silent Island. They believe Caine sleeps under the city and that they can wake him. The Watchers built them as a pressure valve. That valve is no longer under control.\n\nComponent 1 of 11 is done: the 76th Precinct, 2026-05-12. Forty-five actual dead. Sixty-six bodies planted. Public story: seventy-six, no survivors.\n\nAugust Discord: three mortal mayors found dead — Bridgeport, Waterbury, Silent City. Tablets of fake revelations planted with the bodies. Banishment to Nod started. That is the scripture drip the 6:00 portent was waiting on. Do not name the mayors. Do not invent the other ten cuts to look finished.",
     portents: [
       { hour: 3, text: "76th Precinct demolished. 66 planted. Black Temple asked of the Archbishop.", done: true },
-      { hour: 6, text: "Scripture drip. Geometry visible on a map if you already know to look." },
+      { hour: 6, text: "August: three mayors dead. Fake tablets planted. Banishment to Nod started.", done: true },
       { hour: 9, text: "Palla Grande — October.", done: false },
       { hour: 12, text: "The Binding — December. Then Season 1, January 2027." },
     ],
     blanks: [
-      "August and September on the Season 0 calendar — empty in the source. Leave them.",
+      "September on the Season 0 calendar — still empty in the source. Leave it.",
       "The remaining 10 cuts of the geometry. Do not invent sites to look clever.",
+      "The three mayors’ names. The text of the fake tablets.",
     ],
     cast: [],
     reach: ["sleeper", "watchers", "shore"],
@@ -184,22 +185,23 @@ export const FRONTS: Front[] = [
     kind: "bleed",
     impulse: "To point at the island without becoming the island.",
     doom: "Bridgeport’s Season 0 calendar finishes the geometry.",
-    clock: 3,
-    clockNote: "1 of 11 done. You are in late August. The source leaves August empty.",
-    ground: "Bridgeport · East Fairfield. Dashed line across the Sound — not a colony.",
+    clock: 4,
+    clockNote: "Late August. Three mayors dead. An immortal down at Clappers. September still empty.",
+    ground: "Bridgeport · Waterbury · the Sound. Dashed line to Silent City — not a colony.",
     x: 360,
     y: 40,
-    summary: "BBC, Fontana’s clean face, a dead prince, a precinct that is now a question.",
-    body: "Season 0 lives on the Connecticut shore and points at Silent Island. Adrienne Waters is dead. The Esbat is rubble (June). Camarilla agents are probing the mainland, not seated here.\n\nDo not colonize the island with Bridgeport plots. The shore is a front that bleeds. It is not a fourth county.",
+    summary: "BBC, Fontana’s clean face, a dead prince, three dead mayors, a stadium that took an immortal.",
+    body: "Season 0 lives on the Connecticut shore and points at Silent Island. Adrienne Waters is dead. The Esbat is rubble (June). Camarilla agents are probing the mainland, not seated here.\n\nAugust Discord (Time Line Season 0): Bridgeport, Waterbury, and Silent City mayors found dead. Tablets of fake revelations planted with the deaths. Banishment to Nod started. Death of an immortal at Bluefish Clappers BASEketball Stadium.\n\nIn person, same month: Holy Land, CT crisis avoided. Do not smash that table beat into the Discord deaths.\n\nDo not colonize the island with Bridgeport plots. The shore is a front that bleeds. It is not a fourth county.",
     portents: [
       { hour: 3, text: "May: 76th explosion. June: Esbat obliterated. July: Blood Baths, land to the Archbishop.", done: true },
-      { hour: 4, text: "August — empty in the source.", blank: true },
+      { hour: 4, text: "August: three mayors dead. Tablets planted. Immortal dead at Clappers.", done: true },
       { hour: 5, text: "September — empty in the source.", blank: true },
       { hour: 9, text: "October: Palla Grande." },
       { hour: 12, text: "December: The Binding." },
     ],
     blanks: [
-      "August and September beats — do not fill to look prepared.",
+      "September beats — do not fill to look prepared.",
+      "The three mayors’ names. Which immortal fell at Clappers.",
     ],
     cast: [
       { id: "nicholas-vega", name: "Nicholas Vega", role: "City Planner · Fontana face" },
@@ -207,7 +209,35 @@ export const FRONTS: Front[] = [
       { id: "bella-morales", name: "Bella Morales", role: "Crash Report" },
       { id: "antonio-fontana", name: "Antonio Fontana", role: "Operating face / Ductus" },
     ],
-    reach: ["bandidos", "harbingers"],
+    reach: ["bandidos", "harbingers", "three-mayors"],
+  },
+  {
+    id: "three-mayors",
+    name: "August · Three Mayors",
+    kind: "ambition",
+    impulse: "To write a false Book on three civic corpses.",
+    doom: "Banishment to Nod. The tablets become the map.",
+    clock: 4,
+    clockNote: "Bodies down. Tablets planted. Nod started. Names still blank.",
+    ground: "Bridgeport · Waterbury · Silent City. Clappers Stadium. Holy Land on a different beat.",
+    x: 560,
+    y: 40,
+    summary: "The month that ties the three theaters. Three mortal mayors found dead. An immortal down at Clappers.",
+    body: "Source is the Season 0 Time Line, not a rumor. Discord August: Bridgeport, Waterbury, and Silent City mayors found dead. Tablets of fake revelations planted along with the deaths. Banishment to Nod plot started. Death of an immortal at Bridgeport Bluefish Clappers BASEketball Stadium.\n\nIn person, same month, different beat: Holy Land, CT crisis avoided. Keep that at the table. Do not file it as the cause of the bodies.\n\nThe mayors are mortal offices. The stadium death is an immortal. Do not merge them. Do not name anyone the packet did not name.",
+    portents: [
+      { hour: 3, text: "Three civic bodies. Three cities. Same month.", done: true },
+      { hour: 4, text: "Fake tablets planted with the deaths. Nod plot live.", done: true },
+      { hour: 6, text: "Someone reads a tablet in public — or a mayor’s name leaks." },
+      { hour: 12, text: "Banishment to Nod stops being a plot and becomes a road." },
+    ],
+    blanks: [
+      "The three mayors’ names.",
+      "Which immortal died at Clappers.",
+      "What the fake tablets actually say.",
+      "What was avoided at Holy Land.",
+    ],
+    cast: [],
+    reach: ["shore", "harbingers", "sleeper"],
   },
   {
     id: "unmapped",
@@ -251,6 +281,7 @@ export function searchFronts(q: string) {
       f.impulse.toLowerCase().includes(t) ||
       f.ground.toLowerCase().includes(t) ||
       f.summary.toLowerCase().includes(t) ||
+      f.body.toLowerCase().includes(t) ||
       f.kind.includes(t),
   );
 }
