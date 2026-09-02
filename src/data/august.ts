@@ -1,5 +1,5 @@
 /** Season 0 — August 2026. Source: Drive "Time Line Season 0 (2026)" modified 2026-08-20.
- *  Names of the three mayors and the stadium immortal are not in the source. Leave them. */
+ *  Mayor names are ST-desk parody locks (not the living offices). Immortal at Clappers still blank. */
 
 export type AugustBeat = "discord" | "in-person";
 
@@ -19,30 +19,30 @@ export const AUGUST_SOURCE =
 export const AUGUST_SITES: AugustSite[] = [
   {
     id: "mayor-bridgeport",
-    name: "Bridgeport mayor — found dead",
+    name: "Joseph P. Gainim — found dead",
     beat: "discord",
     atlas: "shore",
     placeId: "bridgeport",
-    what: "August Discord beat. The harbor’s mayor is a body. Tablets of fake revelations planted with the death.",
-    blank: "The mayor’s name. Who planted the tablets. Whether the body is the person the city thought it had.",
+    what: "August Discord beat. Bridgeport mayor Joseph P. Gainim is a body. Tablets of fake revelations planted with the death.",
+    blank: "Who planted the tablets. Whether the body is the man the harbor thought it had.",
   },
   {
     id: "mayor-waterbury",
-    name: "Waterbury mayor — found dead",
+    name: "Paul K. Pernerowski, Jr. — found dead",
     beat: "discord",
     atlas: "shore",
     placeId: "waterbury",
-    what: "August Discord beat. Brass City’s mayor is a body. Same month as Bridgeport and Silent City. Tablets planted with the death.",
-    blank: "The mayor’s name. Tie to Holy Land / Judas Kline / Lukas — not locked.",
+    what: "August Discord beat. Waterbury mayor Paul K. Pernerowski, Jr. is a body. Same month as Bridgeport and Silent City. Tablets planted with the death.",
+    blank: "Tie to Holy Land / Judas Kline / Lukas — not locked.",
   },
   {
     id: "mayor-silent-city",
-    name: "Silent City mayor — found dead",
+    name: "Richard Vernon — found dead",
     beat: "discord",
     atlas: "city",
     placeId: "downtown",
-    what: "August Discord beat. The island city’s mayor is a body. Tablets planted with the death. Ties the three theaters.",
-    blank: "The mayor’s name. Where in the fog core the body was left.",
+    what: "August Discord beat. Silent City mayor Richard Vernon is a body. Tablets planted with the death. Ties the three theaters.",
+    blank: "Where in the fog core the body was left.",
   },
   {
     id: "clappers-immortal",
@@ -79,3 +79,10 @@ export function augustAt(placeId: string) {
 export function isAugustDeathPlace(placeId: string) {
   return (AUGUST_DEATH_PLACE_IDS as readonly string[]).includes(placeId);
 }
+
+/** ST-desk parody locks. Not the living offices. */
+export const AUGUST_MAYORS = [
+  { id: "joseph-p-gainim", name: "Joseph P. Gainim", city: "Bridgeport", placeId: "bridgeport" },
+  { id: "paul-k-pernerowski-jr", name: "Paul K. Pernerowski, Jr.", city: "Waterbury", placeId: "waterbury" },
+  { id: "richard-vernon", name: "Richard Vernon", city: "Silent City", placeId: "downtown" },
+] as const;
