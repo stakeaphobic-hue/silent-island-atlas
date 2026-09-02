@@ -1,3 +1,4 @@
+import { isAugustDeathPlace } from "@/data/august";
 import { CITY_PLACES, type CityPlace } from "@/data/city";
 import { asset } from "@/lib/utils";
 
@@ -84,6 +85,17 @@ export function CityMap({
         {CITY_PLACES.map((p) => (
           <Site key={p.id} place={p} active={selected === p.id} onSelect={onSelect} />
         ))}
+        <text
+          x="540"
+          y="148"
+          textAnchor="middle"
+          fill="var(--color-brass)"
+          fontSize="10"
+          fontFamily="var(--font-sans)"
+          letterSpacing="0.18em"
+        >
+          AUGUST · MAYOR FOUND DEAD
+        </text>
       </svg>
     </div>
   );
@@ -143,11 +155,31 @@ function Site({
           cy={place.y}
           r={r}
           fill={fill}
-          stroke={stroke}
+          stroke={isAugustDeathPlace(place.id) ? "var(--color-brass)" : stroke}
           strokeWidth={1.15}
           strokeDasharray={place.open ? "3 3" : undefined}
         />
       )}
+      {isAugustDeathPlace(place.id) ? (
+        <g pointerEvents="none">
+          <line
+            x1={place.x - 8}
+            y1={place.y - 8}
+            x2={place.x + 8}
+            y2={place.y + 8}
+            stroke="var(--color-brass)"
+            strokeWidth="1.6"
+          />
+          <line
+            x1={place.x + 8}
+            y1={place.y - 8}
+            x2={place.x - 8}
+            y2={place.y + 8}
+            stroke="var(--color-brass)"
+            strokeWidth="1.6"
+          />
+        </g>
+      ) : null}
       <text
         x={place.x}
         y={labelY}
