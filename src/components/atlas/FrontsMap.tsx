@@ -155,8 +155,8 @@ export function ClockFace({
   const r = size / 2 - 3;
   const clamped = Math.max(0, Math.min(12, hour));
   const rad = (clamped / 12) * 2 * Math.PI - Math.PI / 2;
-  const x = cx + r * Math.cos(rad);
-  const y = cy + r * Math.sin(rad);
+  const x = round(cx + r * Math.cos(rad));
+  const y = round(cy + r * Math.sin(rad));
   const large = clamped > 6 ? 1 : 0;
   const wedge =
     clamped === 0
@@ -186,10 +186,10 @@ export function ClockFace({
         return (
           <line
             key={i}
-            x1={cx + inner * Math.cos(a)}
-            y1={cy + inner * Math.sin(a)}
-            x2={cx + r * Math.cos(a)}
-            y2={cy + r * Math.sin(a)}
+            x1={round(cx + inner * Math.cos(a))}
+            y1={round(cy + inner * Math.sin(a))}
+            x2={round(cx + r * Math.cos(a))}
+            y2={round(cy + r * Math.sin(a))}
             stroke="var(--color-paper)"
             strokeOpacity="0.4"
             strokeWidth="1"
@@ -198,6 +198,10 @@ export function ClockFace({
       })}
     </svg>
   );
+}
+
+function round(n: number) {
+  return Math.round(n * 1000) / 1000;
 }
 
 function labelKind(kind: Front["kind"]) {

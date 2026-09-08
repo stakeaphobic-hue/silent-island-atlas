@@ -94,7 +94,7 @@ export function CityMap({
           fontFamily="var(--font-sans)"
           letterSpacing="0.18em"
         >
-          AUGUST · MAYOR FOUND DEAD
+          11 AUG · VERNON ON THE NEEDLE
         </text>
       </svg>
     </div>

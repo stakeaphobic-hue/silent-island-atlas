@@ -204,7 +204,7 @@ export const COUNTIES: County[] = [
     x: 1418,
     y: 348,
     summary: "The Gilded Grove: estates on one side, MegaBlocks on the other.",
-    body: "Countess Island, collectively The Gilded Grove, sits northeast of Shell Beach. Two worlds rarely mix. The Gilded Shroud is old money behind high walls and iron gates — Victorian-Gothic and Beaux-Arts mansions, private cemeteries, unused wings. Opposite it, three MegaBlocks — Shadow Bottom, Struggler’s Spire, and The Modest Veil — rise over dry docks and plants, each built to house two thousand families. Modest streets form a buffer between them.",
+    body: "Countess Island, collectively The Gilded Grove, sits northeast of Shell Beach. Two worlds rarely mix. The Gilded Shroud is old money behind high walls and iron gates — Victorian-Gothic and Beaux-Arts mansions, private cemeteries, unused wings. Opposite it, three MegaBlocks — Shadow Bottom, Struggler’s Spire, and The Modest Veil — rise over dry docks and plants, each built to house two thousand families. Modest streets form a buffer between them.\n\n3 July 2026: Abe, Arabella, and Thaddeus report Shadowlands traffic between Silent Island and Dutchess Island — source spelling. White citadel in barren land, energy bursts, silver airships heading northeast. Shipyards of cargo and spectre-overseen wraith labor, a scaffold into void. This desk maps that report here. Do not merge Dutchess with Countess without a lock.",
   },
 ];
 
@@ -379,7 +379,7 @@ export const PLACES: Place[] = [
     layer: "landmarks",
     alwaysLabel: true,
     summary: "Working city that never recovered. Art deco, brutalism, wet streets.",
-    body: "Heart of Silent County. Art deco beside brutalist concrete and industrial zones. Fog swallows blocks and drifts on. Streets feel different by the hour. Memories do not quite hold. The city has a half-remembered quality, as if parts of its history were never meant to be examined too closely. It swallows history — and sometimes people — without a trace.\n\nDowntown is the BWC DA Tower: 2,666 ft of basalt-black art-deco gothic, airship docking ring, no pyramid. Bedlam Woe’s island seat. Not BBC.",
+    body: "Heart of Silent County. Art deco beside brutalist concrete and industrial zones. Fog swallows blocks and drifts on. Streets feel different by the hour. Memories do not quite hold. The city has a half-remembered quality, as if parts of its history were never meant to be examined too closely. It swallows history — and sometimes people — without a trace.\n\nDowntown is the BWC DA Tower: 2,666 ft of basalt-black art-deco gothic, airship docking ring, no pyramid. 11 August 2026: mayor Richard Vernon’s head was found mounted on it. 8 September: special election, Rick Ocasick vs Melinda Carlisle.",
     tags: ["County seat"],
   },
   {
@@ -677,7 +677,7 @@ export const PLACES: Place[] = [
     layer: "landmarks",
     alwaysLabel: true,
     summary: "Eastern tip of the main island, across from Countess Island.",
-    body: "A sad beach of dirty sand, muted water, and iridescent algae. Shells and slag in equal measure. Countess Island sits northeast across a short, cold channel. This is where the main island ends and the Gilded Grove begins to be someone else’s problem.",
+    body: "A sad beach of dirty sand, muted water, and iridescent algae. Shells and slag in equal measure. Countess Island sits northeast across a short, cold channel. This is where the main island ends and the Gilded Grove begins to be someone else’s problem.\n\nMelinda Carlisle retired here. Ho-Ho’s Toy Drive. 8 September 2026 she is on the Silent City special-election ticket.",
     tags: ["Shore"],
   },
 

@@ -20,7 +20,7 @@ export type CityPlace = {
 export const CITY_OVERVIEW = {
   name: "Silent City",
   summary: "Heart of Silent County. No street atlas exists in the packet. This is the metro: the needle, the south MegaBlock, the gate towns, Route 69.",
-  body: "Art deco beside brutalist concrete and aging industry. Streets wet when it has not rained. Fog from the Sound lingers too long. Buildings rearrange overnight. The city swallows history — and sometimes people — without a trace.\n\nDowntown is the BWC DA Tower: 2,666 ft, docking ring, no pyramid. The Silent City MegaBlock is where the city actually lives. Route 69 is the spine.\n\nThere is no named street grid in the packet. Dashed pins are blanks. Name them at the table. Do not paste Bridgeport or Manhattan onto this chart to look finished.",
+  body: "Art deco beside brutalist concrete and aging industry. Streets wet when it has not rained. Fog from the Sound lingers too long. Buildings rearrange overnight. The city swallows history — and sometimes people — without a trace.\n\nDowntown is the BWC DA Tower: 2,666 ft, docking ring, no pyramid. 11 August 2026: mayor Richard Vernon’s head was found mounted on it. 8 September: last week of the special election, Rick Ocasick vs Melinda Carlisle.\n\nThere is no named street grid in the packet. Dashed pins are blanks.",
 };
 
 export const CITY_PLACES: CityPlace[] = [
@@ -33,9 +33,9 @@ export const CITY_PLACES: CityPlace[] = [
     kind: "city",
     ring: "downtown",
     islandPlace: "silent-city",
-    summary: "Working city that never recovered. The needle is the skyline.",
-    body: "Heart of Silent County. Art deco beside brutalist concrete and industrial zones. Fog swallows blocks and drifts on. Streets feel different by the hour. Memories do not quite hold.\n\nDowntown is the BWC DA Tower. Not BBC. The MegaBlock is a different building, south of this core, where a thousand families live.",
-    tags: ["County seat", "packet"],
+    summary: "Working city that never recovered. Richard Vernon’s head was found on the needle.",
+    body: "Heart of Silent County. Art deco beside brutalist concrete and industrial zones. Fog swallows blocks and drifts on. Streets feel different by the hour. Memories do not quite hold.\n\nDowntown is the BWC DA Tower. 11 August 2026: mayor Richard Vernon’s head mounted on it. Body not found. Tablet fragment of Banishment to Nod planted with the death.\n\n8 September: last week of the special election — Rick Ocasick vs Melinda Carlisle.\n\nThe MegaBlock is a different building, south of this core, where a thousand families live.",
+    tags: ["County seat", "packet", "Season 0"],
   },
   {
     id: "bwc-da",
@@ -47,7 +47,7 @@ export const CITY_PLACES: CityPlace[] = [
     ring: "downtown",
     islandPlace: "bwc-da",
     summary: "2,666 ft. Basalt-black art-deco gothic. Airship ring. No pyramid.",
-    body: "Bedlam Woe Corporation Delta Atlantic. Downtown Silent City. Regional Masonic construction in the 1950s. Corporate HQ of unknown full scope. Not host to Hunter cells or Setites. UAP, strange lights, and cigar-shaped craft around the tower.\n\nNot BBC. BBC DVDA and BBC DP stand in Bridgeport. BWC DV is Waterbury. BWC DA stands here.",
+    body: "Bedlam Woe Corporation Delta Atlantic. Downtown Silent City. Regional Masonic construction in the 1950s. Corporate HQ of unknown full scope. Not host to Hunter cells or Setites. UAP, strange lights, and cigar-shaped craft around the tower.\n\n11 August 2026: Richard Vernon’s head was found mounted here. Body not found.\n\nNot BBC. BBC DVDA and BBC DP stand in Bridgeport. BWC DV is Waterbury. BWC DA stands here.",
     tags: ["Tower", "UAP", "BWC", "not BBC", "packet"],
   },
   {

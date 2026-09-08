@@ -18,6 +18,7 @@ import {
   shoreTown,
   type ShoreTown,
 } from "@/data/shore";
+import { SeasonBeats } from "@/components/desk/SeasonBeats";
 import { cn, asset } from "@/lib/utils";
 
 type Sel = { type: "overview" } | { type: "town"; id: string } | { type: "new-york" };
@@ -184,6 +185,8 @@ function ShoreDossier({
         ) : null}
         <p className="text-sm leading-relaxed text-steel">{summary}</p>
         <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted">{body}</p>
+
+        <SeasonBeats placeId={ny ? "new-york" : town?.id} />
 
         {parent ? (
           <Button variant="secondary" size="sm" className="mt-4" onClick={() => onSelect({ type: "town", id: parent.id })}>

@@ -17,6 +17,7 @@ import {
 import { FRONTS, frontById, searchFronts, type Front } from "@/data/fronts";
 import { peopleAtPlace, peopleInCounty } from "@/data/place-people";
 import { ClockFace } from "@/components/atlas/FrontsMap";
+import { SeasonBeats } from "@/components/desk/SeasonBeats";
 import { cn, asset } from "@/lib/utils";
 
 export type Selection =
@@ -147,6 +148,10 @@ export function Dossier({
         ) : null}
         <p className="text-sm leading-relaxed text-steel">{summary}</p>
         <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted">{body}</p>
+
+        {place || county?.id === "countess" ? (
+          <SeasonBeats placeId={place?.id ?? "countess"} />
+        ) : null}
 
         {place?.id === "silent-city" && (
           <div className="mt-4 flex flex-wrap gap-2">
@@ -349,7 +354,7 @@ function FrontsDossier({
       <Separator />
 
       <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4">
-        {front ? <FrontBody front={front} /> : null}
+        {front ? <FrontBody front={front} /> : <SeasonBeats />}
 
         {hits.length > 0 && (
           <section className="mt-6">
@@ -371,7 +376,7 @@ function FrontsDossier({
       </div>
 
       <div className="px-5 py-3 text-xs text-subtle-fg">
-        Late August 2026. August and September are empty in the source. Weirding is unseated. NY is unmapped.
+        Early September 2026. Special elections in their last week. Weirding is unseated. NY is unmapped.
       </div>
     </aside>
   );

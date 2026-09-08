@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { CITY_OVERVIEW, CITY_PLACES, cityPlace, searchCity, type CityPlace, type CityRing } from "@/data/city";
 import { peopleAtPlace } from "@/data/place-people";
+import { SeasonBeats } from "@/components/desk/SeasonBeats";
 import { cn, asset } from "@/lib/utils";
 
 type Sel = { type: "overview" } | { type: "place"; id: string };
@@ -168,6 +169,8 @@ function CityDossier({
         ) : null}
         <p className="text-sm leading-relaxed text-steel">{summary}</p>
         <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted">{body}</p>
+
+        <SeasonBeats placeId={place?.id} />
 
         <div className="mt-4 flex flex-wrap gap-2">
           <Button variant="secondary" size="sm" asChild>

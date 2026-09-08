@@ -557,7 +557,7 @@
     "ethnicity": "Latina",
     "publicImage": "Ruthless businesswoman with unshakable public values. Glamorous, controlled, borderline “bad girl” presentation that never quite slips into actual scandal. Dresses in high-end sexy business attire. BODY LOCK: defined narrow waist, toned legs, no thick thighs, no plus-size, clear pear waist-to-hip",
     "notes": "Ruthless in business, unshakable in her public values. Widely seen as a roadblock to Bridgeport’s worst predators. Believes she is still fighting the good fight even as the machine she runs is used for darker purposes. Untouchable",
-    "background": "Rose from the slums with her sister, whom she later lost to addiction. That loss lit a pure fire in her. Publicly drives city programs for the homeless, anti-drug efforts, and trafficking sanctuary pathways. In truth she was chosen: a cell of Hunters operates inside/beneath Protek while Setite benefactors use the company as a neon attractor for vampires and to exploit the addicted. Dana remains the public “puritan” face of the corporation. College roommate and former lover of Daisy; the spark between them"
+    "background": "CEO of Protek (former CFO). 11 August 2026: Weyland impersonated her to retrieve Banishment to Nod tablet fragments from the Bridgeport 111th Precinct evidence locker and handed them to Abhartach. Whether she knows is open."
   },
   {
     "id": "daisy",
@@ -719,13 +719,13 @@
     "faction": "Slippery When Wet",
     "bucket": "Kindred",
     "splat": "Vampire — Sabbat",
-    "role": "Member of Slippery When Wet",
+    "role": "Templar (conscript 30 June 2026) · Slippery When Wet",
     "shows": "",
     "age": "",
     "ethnicity": "",
     "publicImage": "",
     "notes": "Eager to rise within the pack and Devareaux",
-    "background": "Pack member. Fully loyal and hungry for advancement. Source: ENVYVERSE Vol"
+    "background": "Pack member of Slippery When Wet. 30 June 2026 Cardinal Francisco conscripted him to replace a templar lost when the Toy Man killed the Regent’s Paladin at Rook’s Blood Bath on the 76th. 11 August: investigated the Clappers Quickening with Bishop Bethany. A trickster posing as a Watcher trolled them."
   },
   {
     "id": "gunther",
@@ -963,7 +963,7 @@
     "ethnicity": "",
     "publicImage": "",
     "notes": "Quiet intensity, ritualistic focus. Provides spiritual guidance and arcane",
-    "background": "Chaplain of Wolf’s Head. Conducts rituals that strengthen resolve and mystic bonds. Four arms enable complex positions. Source: ENVYVERSE Vol"
+    "background": "Chaplain of Wolf’s Head. Noddist. 11 August 2026: received the Banishment to Nod fragments from Weyland and pieced Chronicles of Reckoning from a greater book. Four arms. Source: ENVYVERSE Vol plus Season 0 lock."
   },
   {
     "id": "kir",
@@ -6241,7 +6241,7 @@
     "ethnicity": "Caucasian",
     "publicImage": "Bridgeport’s competent, quietly ambitious City Planner. The man who “gets things done” without drama. Respected by the legitimate power structure. Never raises his voice. Always the calmest person in the",
     "notes": "Cold, observant, almost unnaturally still. Eye of the Storm — becomes calmer the more chaos he orchestrates. Speaks softly. Never wastes a threat. Predator Nature sits just beneath the surface. Takes what he wants and rearranges the board so resistance becomes",
-    "background": "Born into a recognized underworld family. Younger brother of the late Vick and Vince Vega. Survived the purge of the old network by being the planner who never made noise. Placed by Antonio Fontana as primary mortal-world face and voice in Bridgeport. City Planner position engineered as perfect cover for near-total influence over development, infrastructure, and the physical shape of the city. Unawakened Immortal — has never experienced first death, does not know of his potential. Accelerated healing currently attributed to discipline and ‘good"
+    "background": "Born into a recognized underworld family. Younger brother of the late Vick and Vince Vega. Placed by Antonio Fontana as primary mortal-world face and City Planner of Bridgeport. Season 0: Fontana’s hidden Priscus sits behind this cover. Unawakened Immortal — has never experienced first death, does not know of his potential."
   },
   {
     "id": "rico-clap-vargas",
@@ -8509,7 +8509,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026 FBI crisis averted; she was among those the Bureau walked with. Blood-bank and sperm-bank bombings on the old sheet."
   },
   {
     "id": "hugo-grasberger",
@@ -8523,7 +8523,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "edith-henry",
@@ -8537,7 +8537,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "ordon-brujoh",
@@ -8551,7 +8551,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. Season 0 source spelling Ordon Brujah. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "vinny-turner",
@@ -8565,7 +8565,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "sandy-lukowski",
@@ -8579,7 +8579,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "vivian-miranda",
@@ -8593,7 +8593,7 @@
     "ethnicity": "",
     "publicImage": "Captured. In federal",
     "notes": "",
-    "background": "Listed member of the Children of Caine cell associated with blood-bank and sperm-bank bombings. Captured by the FBI at Holy Land,"
+    "background": "Children of Caine, Holy Land cell. 1 August 2026: in FBI custody after the crisis was averted."
   },
   {
     "id": "judas-kline",
@@ -8607,21 +8607,21 @@
     "ethnicity": "",
     "publicImage": "At large / status changed. Bound to",
     "notes": "",
-    "background": "Former ghoul. Only listed member of the Waterbury Holy Land cell not taken in the FBI raid. Current status: ghoul belonging to Lukas. Open whether he was already under Lukas before the raid or claimed"
+    "background": "1 August 2026 Holy Land: FBI walked with a body double. The real Judas is a ghoul owned by the Toreador Lukas. Only listed Holy Land cell member not actually taken."
   },
   {
     "id": "lukas",
     "name": "Lukas",
-    "faction": "Unknown Cainite (open)",
+    "faction": "Toreador (desk lock 2026-09-08)",
     "bucket": "Kindred",
     "splat": "Vampire",
-    "role": "Domitor of Judas Kline; identity/clan/agenda OPEN",
+    "role": "Toreador · domitor of Judas Kline",
     "shows": "",
     "age": "",
     "ethnicity": "",
     "publicImage": "Unknown. Name",
-    "notes": "Undefined.",
-    "background": "Chronicle note only. Owns Judas Kline as a ghoul after the Waterbury raid. Clan, generation, sect, and agenda remain"
+    "notes": "Clan locked from Season 0 Holy Land beat. Agenda still open.",
+    "background": "Toreador. Kept the real Judas Kline as a ghoul while Cainites fed the FBI a double at Holy Land, 1 August 2026. Generation, sect beyond that, and agenda remain open."
   },
   {
     "id": "willow-gangrel",
@@ -8733,7 +8733,7 @@
     "ethnicity": "",
     "publicImage": "Red hair, green eyes, pale skin, vintage violet locket,",
     "notes": "Enchanting Voice, refined British accent,",
-    "background": "Incoming Batch 2026-08-12 modular. Apparent youth is appearance only; adult"
+    "background": "3 July 2026: with Abe in the Shadowlands between Silent Island and Dutchess Island. White citadel, energy bursts, silver airships, spectre docks, a scaffold into void. Still in the middle of that. Incoming Batch 2026-08-12 modular otherwise."
   },
   {
     "id": "camilla",
@@ -9844,16 +9844,16 @@
   {
     "id": "antonio-fontana",
     "name": "Antonio Fontana",
-    "faction": "Los Bandidos / Bridgeport Underworld",
-    "bucket": "Mortal",
-    "splat": "Mortal",
-    "role": "Underworld boss; Nicholas Vega’s true principal",
+    "faction": "Los Bandidos de Mariel / Sabbat",
+    "bucket": "Kindred",
+    "splat": "Vampire — Sabbat",
+    "role": "Ductus · hidden Priscus",
     "shows": "",
     "age": "mid-50s apparent",
     "ethnicity": "Cuban",
     "publicImage": "",
     "notes": "Old-school quiet gravity. Lets lieutenants talk. Does not repeat",
-    "background": "Operating face of the Fontana network. Old-school quiet gravity; lieutenants talk, he does not repeat himself. Nicholas Vega works as his public-clean enforcer. Gina Fontana is kin on file."
+    "background": "Mariel 1980. Brujah antitribu, 7th, Embraced April 1983. Ductus of Los Bandidos de Mariel. Priscus who keeps the title hidden. Packmate Manny is a Paladin to Francisco Polonia and hides that too. Nicholas Vega is the clean public face. 7–14 July 2026: Blood Bathed Job Bratovitch at Scorched Hope because Cardinal Francisco will not do that for a Loyalist. 76th Precinct was Bandidos work on Harbinger contract."
   },
   {
     "id": "gina-fontana",
@@ -10701,13 +10701,13 @@
     "faction": "Independent / Chamber Court",
     "bucket": "Kindred",
     "splat": "Vampire",
-    "role": "Occupant of the Basalt Throne / Chamber Lord",
+    "role": "Cardinal Francisco · Occupant of the Basalt Throne",
     "shows": "",
     "age": "",
     "ethnicity": "",
     "publicImage": "Sits still on an elaborately carved dark basalt throne with gold inlay and a golden crown device at the top of the back. Dark layered robes. The throne is the",
     "notes": "Controlled, watchful, aristocratic. Speaks",
-    "background": "Independent Chamber Court figure, not BBC. Holds private stone chambers — torchlight, cool air, very little small talk. Watchful. Speaks when it costs someone else."
+    "background": "Season 0 names Cardinal Francisco Polonia: approves Rook as Archbishop (6 June), performs Rook’s Blood Bath at the 76th (30 June), has to be restrained after the Toy Man, conscripts Hilario, will not Blood Bath a Loyalist Priscus (Job at Scorched Hope is Tony’s work). Desk treats this sheet and that Cardinal as the same name until split."
   },
   {
     "id": "alan-garnet",
@@ -10806,5 +10806,131 @@
     "publicImage": "Nicole Devareaux on paper. Envy in the rooms that matter.",
     "notes": "Legal and mortal-facing name of Envy Devareaux. Same person.",
     "background": "Do not treat as a separate Kindred. Storyteller identity and public-facing paperwork for Pandemonium / Envy Devareaux."
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "Head found mounted on BBC DP. Body not found.",
+    "notes": "",
+    "background": "ST-desk parody lock of the living office. 11 August 2026: decapitated head mounted on Bridgeport’s tallest building (BBC DP). Banishment to Nod fragment planted with it.",
+    "id": "joseph-p-gainim",
+    "name": "Joseph P. Gainim",
+    "faction": "City of Bridgeport",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayor of Bridgeport — dead 11 August 2026"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "Head found mounted on BWC DV. Body not found.",
+    "notes": "",
+    "background": "ST-desk parody lock. 11 August 2026: head on Waterbury’s tallest building (BWC DV). Tablet fragment planted with it.",
+    "id": "paul-k-pernerowski-jr",
+    "name": "Paul K. Pernerowski, Jr.",
+    "faction": "City of Waterbury",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayor of Waterbury — dead 11 August 2026"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "Head found mounted on BWC DA. Body not found.",
+    "notes": "",
+    "background": "ST-desk parody lock. 11 August 2026: head on Silent City’s tallest building (BWC DA). Tablet fragment planted with it.",
+    "id": "richard-vernon",
+    "name": "Richard Vernon",
+    "faction": "Silent City",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayor of Silent City — dead 11 August 2026"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthem: First of the Month, Bone Thugs-n-Harmony",
+    "background": "Controversial comedian and actor. Bridgeport icon. Fuck You, Kiss My Ass. Assumed sure thing. Last week of special elections as of 8 September 2026.",
+    "id": "kris-rock",
+    "name": "Kris Rock",
+    "faction": "Bridgeport special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Bridgeport"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthem: Escape from New York",
+    "background": "Mysterious figure from the Bridgeport streets. Reputation of not to be fucked with. Gets things done. Last week of special elections as of 8 September 2026.",
+    "id": "snake-blitzkin",
+    "name": "Snake Blitzkin",
+    "faction": "Bridgeport special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Bridgeport"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthem: This Corrosion, Sisters of Mercy",
+    "background": "Retired singer of Type O Positive. Goth rock out of Brooklyn. Waterbury Wetters fan. Gentle giant. Blood banks and children’s cancer research. Last week of special elections as of 8 September 2026.",
+    "id": "piotor-steele",
+    "name": "Piotor Steele",
+    "faction": "Waterbury special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Waterbury"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthem: Albatross, Corrosion of Conformity",
+    "background": "Accountant from the West Coast. Twenty years in witness protection after informing on South African diplomats laundering gold. Money bought the door. Last week of special elections as of 8 September 2026.",
+    "id": "cleo-getz",
+    "name": "Cleo Getz",
+    "faction": "Waterbury special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Waterbury"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthem: Drive, covered by Deaftones",
+    "background": "Lead singer of the Deaftones. Party monster off stage. Believes himself settled enough for the chair. Last week of special elections as of 8 September 2026.",
+    "id": "rick-ocasick",
+    "name": "Rick Ocasick",
+    "faction": "Silent City special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Silent City"
+  },
+  {
+    "shows": "",
+    "age": "",
+    "ethnicity": "",
+    "publicImage": "",
+    "notes": "Anthems: Our Lips Are Sealed (The Ho-Ho’s); Video Killed the Radio Star (The Buggles)",
+    "background": "68, does not look a day over 45. Panacea Pharmaceuticals experimental medication, 1998 — near halt in cell division. Retired to Shell Beach. Runs the yearly Ho-Ho’s Toy Drive. Last week of special elections as of 8 September 2026.",
+    "id": "melinda-carlisle",
+    "name": "Melinda Carlisle",
+    "faction": "Silent City special election",
+    "bucket": "Mortal",
+    "splat": "Mortal",
+    "role": "Mayoral candidate — Silent City"
   }
 ]

@@ -318,9 +318,10 @@ function TownNode({
   onSelect: (id: string) => void;
 }) {
   const tower = town.kind === "tower";
+  const site = town.kind === "site";
   const nh = town.county === "New Haven";
   const fill = active ? "var(--color-brass)" : "var(--color-elevated)";
-  const stroke = active ? "var(--color-paper)" : nh ? "var(--color-steel)" : "var(--color-brass)";
+  const stroke = active ? "var(--color-paper)" : site ? "var(--color-danger)" : nh ? "var(--color-steel)" : "var(--color-brass)";
   const dir = town.label ?? "top";
   const labelX = dir === "left" ? town.x - town.r - 8 : dir === "right" ? town.x + town.r + 8 : town.x;
   const labelY =
@@ -349,6 +350,13 @@ function TownNode({
           y={town.y - town.r * 1.6}
           width={town.r * 2}
           height={town.r * 3.2}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={active ? 2 : 1.25}
+        />
+      ) : site ? (
+        <polygon
+          points={`${town.x},${town.y - town.r} ${town.x + town.r},${town.y} ${town.x},${town.y + town.r} ${town.x - town.r},${town.y}`}
           fill={fill}
           stroke={stroke}
           strokeWidth={active ? 2 : 1.25}
