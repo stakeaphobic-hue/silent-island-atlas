@@ -53,7 +53,10 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "North of Trumbull, east of Easton. On 7 July 2026 a large influx of Romani travelers arrived for a wedding of two families. Tony Fontana used the blood to manipulate a murder. The families rioted. Job Bratovitch was told that night he would be made Priscus.\n\nThe burnt church from that riot is Scorched Hope, consecrated 14 July.",
     tags: ["Inland", "Season 0"],
     blanks: ["Which families. Whether anyone still camps the ruins."],
-    people: [],
+    people: [
+      { id: "antonio-fontana", name: "Antonio Fontana", role: "Manipulated the murder" },
+      { id: "job-bratovitch", name: "Job Bratovitch", role: "Told he would be Priscus" },
+    ],
   },
   {
     id: "trumbull",
@@ -116,9 +119,14 @@ export const SHORE_TOWNS: ShoreTown[] = [
       { id: "natasha-volkov", name: "Natasha Volkov", role: "Late night" },
       { id: "nicholas-vega", name: "Nicholas Vega", role: "City Planner" },
       { id: "antonio-fontana", name: "Antonio Fontana", role: "Ductus · hidden Priscus" },
+      { id: "manny-paladin", name: "Manny", role: "Hidden Paladin" },
+      { id: "archbishop-rook", name: "Archbishop Rook", role: "Diocese as of 6 June" },
+      { id: "danesti", name: "Danesti", role: "Retired Archbishop" },
+      { id: "joseph-p-gainim", name: "Joseph P. Gainim", role: "Mayor · dead 11 August" },
       { id: "kris-rock", name: "Kris Rock", role: "Special election" },
       { id: "snake-blitzkin", name: "Snake Blitzkin", role: "Special election" },
       { id: "hilario-devareaux", name: "Hilario Devareaux", role: "Templar" },
+      { id: "isabella-flores", name: "Isabella Flores", role: "Priscus · evaluated Job 2 June" },
     ],
   },
   {
@@ -138,6 +146,9 @@ export const SHORE_TOWNS: ShoreTown[] = [
     people: [
       { id: "hilario-devareaux", name: "Hilario Devareaux", role: "Conscripted here" },
       { id: "antonio-fontana", name: "Antonio Fontana", role: "Contract" },
+      { id: "archbishop-rook", name: "Archbishop Rook", role: "Blood Bath 30 June" },
+      { id: "polonia", name: "Francisco Polonia", role: "Performed the Bath" },
+      { id: "toy-man", name: "The Toy Man", role: "Killed the Paladin" },
     ],
   },
   {
@@ -157,6 +168,8 @@ export const SHORE_TOWNS: ShoreTown[] = [
     people: [
       { id: "dana-lopez", name: "Dana Lopez", role: "Face that was stolen" },
       { id: "talos-abhartach", name: "Abhartach", role: "Received the tablets" },
+      { id: "bishop-brigette", name: "Bishop Brigette", role: "Traced the fragments here" },
+      { id: "weyland", name: "Weyland", role: "Walked them out as Lopez" },
     ],
   },
   {
@@ -173,7 +186,13 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "Not rubble. Danesti knew through sorcery. Mockingbird, Danesti, and others cut the explosives at the last moment. Traced to Belco — Sebastian Rowlands.\n\n7 July: Sid Naya is captured here by the Black Hand and dies in the interview.",
     tags: ["Season 0", "Sabbat"],
     blanks: ["The second mercenary safehouse. Belco’s remaining paper."],
-    people: [],
+    people: [
+      { id: "danesti", name: "Danesti", role: "Knew through sorcery" },
+      { id: "mockingbird", name: "Mockingbird", role: "Dismantled the charges" },
+      { id: "sid-naya", name: "Sid Naya", role: "Died in the interview" },
+      { id: "sebastian-rowlands", name: "Sebastian Rowlands", role: "Belco" },
+      { id: "willow-esbat", name: "Willow", role: "Aegis on the mercenary lead" },
+    ],
   },
   {
     id: "clappers",
@@ -189,7 +208,10 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "Two Immortals clash. One remains. The Quickening takes a transformer. One-mile blackout. Injuries in the dark coliseum.\n\nBishop Bethany and Templar Hilario investigate. A trickster posing as a Watcher gives them two names that will matter: the Watchers, and Immortals.",
     tags: ["Season 0", "Immortal", "Stadium"],
     blanks: ["Which Immortal died. Whether the crowd saw the truth."],
-    people: [{ id: "hilario-devareaux", name: "Hilario Devareaux", role: "Investigated with Bethany" }],
+    people: [
+      { id: "hilario-devareaux", name: "Hilario Devareaux", role: "Investigated with Bethany" },
+      { id: "bishop-bethany", name: "Bishop Bethany", role: "Investigated the Quickening" },
+    ],
   },
   {
     id: "scorched-hope",
@@ -205,7 +227,10 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "The travelers burnt it on 7 July. Priscus Tony Fontana bathed Job here on the 14th because Cardinal Francisco — Ultra Conservative — will not do this for a Loyalist Priscus. The ground is consecrated Scorched Hope.",
     tags: ["Season 0", "Blood Bath", "Loyalist"],
     blanks: ["Whether the ashes still hold a ritus."],
-    people: [{ id: "antonio-fontana", name: "Antonio Fontana", role: "Performed the Bath" }],
+    people: [
+      { id: "antonio-fontana", name: "Antonio Fontana", role: "Performed the Bath" },
+      { id: "job-bratovitch", name: "Job Bratovitch", role: "Bathed here · Loyalist Priscus" },
+    ],
   },
   {
     id: "bbc-dp",
@@ -221,7 +246,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "Bridgeport Business Center of Downtown Park. The original needle: 2,666 feet of basalt-black art-deco, 1950s Masonic civic prestige, a Tura limestone pyramid that drinks moonlight. No neon. No BBC DVDA mark.\n\n11 August 2026: Joseph P. Gainim’s head was found mounted on this crown. Body not found. A Banishment to Nod fragment was planted with it.\n\nBuilt as an airship port. Traffic never came. The gantries are sealed; the lights stay on.\n\nThis is not BBC DVDA. This is not BWC DA.",
     tags: ["Tower", "Downtown", "2,666 ft", "Airship"],
     blanks: ["Who pays the bills. Who walks the upper floors."],
-    people: [],
+    people: [{ id: "joseph-p-gainim", name: "Joseph P. Gainim", role: "Head mounted 11 August" }],
   },
   {
     id: "bbc-dvda",
@@ -304,6 +329,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     people: [
       { id: "judas-kline", name: "Judas Kline", role: "Real Judas · Lukas’s ghoul" },
       { id: "lukas", name: "Lukas", role: "Toreador · domitor" },
+      { id: "paul-k-pernerowski-jr", name: "Paul K. Pernerowski, Jr.", role: "Mayor · dead 11 August" },
       { id: "piotor-steele", name: "Piotor Steele", role: "Special election" },
       { id: "cleo-getz", name: "Cleo Getz", role: "Special election" },
     ],
@@ -324,6 +350,12 @@ export const SHORE_TOWNS: ShoreTown[] = [
     blanks: ["What it resets into. The three Tremere. 12 vs 26 Sep."],
     people: [
       { id: "lily-oth", name: "Lily Oth", role: "FBI has her" },
+      { id: "hugo-grasberger", name: "Hugo Grasberger", role: "FBI has him" },
+      { id: "edith-henry", name: "Edith Henry", role: "FBI has her" },
+      { id: "ordon-brujoh", name: "Ordon Brujah", role: "FBI has him · source spelling" },
+      { id: "vinny-turner", name: "Vinny Turner", role: "FBI has him" },
+      { id: "sandy-lukowski", name: "Sandy Lukowski", role: "FBI has her" },
+      { id: "vivian-miranda", name: "Vivian Miranda", role: "FBI has her" },
       { id: "judas-kline", name: "Judas Kline", role: "The double walked; he didn’t" },
       { id: "lukas", name: "Lukas", role: "Kept the real Judas" },
     ],
@@ -342,7 +374,7 @@ export const SHORE_TOWNS: ShoreTown[] = [
     body: "Bedlam Woe Corporation Divine Vogue. The Brass City needle. DV is Divine Vogue — the same two letters as the Midtown media brand, a different corporation.\n\n11 August 2026: Paul K. Pernerowski, Jr.’s head was found mounted here. Body not found. Tablet fragment planted with it.\n\nThis is not BWC DA. Delta Atlantic is downtown Silent City. This is not BBC DVDA.",
     tags: ["Tower", "BWC", "Divine Vogue", "Waterbury"],
     blanks: ["Height. Crown. Who occupies it. Whether Holy Land can see it from the hill."],
-    people: [],
+    people: [{ id: "paul-k-pernerowski-jr", name: "Paul K. Pernerowski, Jr.", role: "Head mounted 11 August" }],
   },
   {
     id: "wolcott",
