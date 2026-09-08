@@ -20,19 +20,19 @@ export function ShoreMap({
   return (
     <div className="relative h-full min-h-0 bg-water">
       <svg
-        viewBox="0 0 1100 640"
+        viewBox="0 0 1280 640"
         className="h-full w-full"
         role="img"
-        aria-label="Shore chart of East Fairfield County and New Haven, Long Island Sound to the south."
+        aria-label="Shore chart of East Fairfield County and New Haven County, Long Island Sound to the south."
       >
-        <rect width="1100" height="640" fill="var(--color-water)" />
+        <rect width="1280" height="640" fill="var(--color-water)" />
 
         <path
-          d="M 0 0 L 1100 0 L 1100 332 L 980 338 L 900 328 L 840 362 L 800 308 L 770 306 L 740 368 L 680 348 L 600 340 L 548 368 L 510 350 L 478 338 L 430 388 L 400 352 L 348 372 L 318 318 L 288 316 L 268 368 L 220 348 L 160 332 L 100 348 L 0 338 Z"
+          d="M 0 0 L 1280 0 L 1280 278 L 1220 286 L 1160 274 L 1100 292 L 1040 280 L 980 298 L 920 286 L 860 304 L 800 288 L 770 306 L 740 368 L 680 348 L 600 340 L 548 368 L 510 350 L 478 338 L 430 388 L 400 352 L 348 372 L 318 318 L 288 316 L 268 368 L 220 348 L 160 332 L 100 348 L 0 338 Z"
           fill="var(--color-ink)"
         />
 
-        {/* Housatonic — Shelton to Stratford mouth */}
+        {/* Housatonic — county line, Shelton to Stratford mouth */}
         <path
           d="M 518 36 C 512 110 506 168 510 230 C 514 290 532 338 548 368"
           fill="none"
@@ -40,14 +40,26 @@ export function ShoreMap({
           strokeWidth="11"
           strokeLinecap="round"
         />
-        <text x="528" y="200" fill="var(--color-subtle-fg)" fontSize="9" fontFamily="var(--font-sans)" letterSpacing="0.12em">
+        <text x="470" y="230" fill="var(--color-subtle-fg)" fontSize="9" fontFamily="var(--font-sans)" letterSpacing="0.12em">
           HOUSATONIC
+        </text>
+
+        {/* Naugatuck — Waterbury down to Derby confluence */}
+        <path
+          d="M 500 58 C 510 78 528 92 535 110 C 548 138 555 158 560 192 C 558 210 530 220 518 200"
+          fill="none"
+          stroke="var(--color-water)"
+          strokeWidth="7"
+          strokeLinecap="round"
+        />
+        <text x="588" y="108" fill="var(--color-subtle-fg)" fontSize="8" fontFamily="var(--font-sans)" letterSpacing="0.1em">
+          NAUGATUCK
         </text>
 
         <line
           x1="40"
           y1="278"
-          x2="1040"
+          x2="1240"
           y2="268"
           stroke="var(--color-steel)"
           strokeOpacity="0.35"
@@ -76,7 +88,7 @@ export function ShoreMap({
           strokeDasharray="8 7"
         />
         <text
-          x="430"
+          x="390"
           y="150"
           fill="var(--color-subtle-fg)"
           fontSize="10"
@@ -88,13 +100,35 @@ export function ShoreMap({
 
         <text
           x="40"
-          y="28"
+          y="22"
           fill="var(--color-subtle-fg)"
           fontSize="11"
           fontFamily="var(--font-sans)"
           letterSpacing="0.22em"
         >
-          EAST FAIRFIELD · WATERBURY · NEW HAVEN · THE SOUND
+          EAST FAIRFIELD · NEW HAVEN COUNTY · THE SOUND
+        </text>
+        <text
+          x="40"
+          y="80"
+          fill="var(--color-brass)"
+          fillOpacity="0.55"
+          fontSize="11"
+          fontFamily="var(--font-sans)"
+          letterSpacing="0.2em"
+        >
+          EAST FAIRFIELD
+        </text>
+        <text
+          x="860"
+          y="44"
+          fill="var(--color-brass)"
+          fillOpacity="0.55"
+          fontSize="11"
+          fontFamily="var(--font-sans)"
+          letterSpacing="0.2em"
+        >
+          NEW HAVEN COUNTY
         </text>
         <text
           x="40"
@@ -104,11 +138,11 @@ export function ShoreMap({
           fontSize="12"
           fontFamily="var(--font-display)"
         >
-          Long Island Sound
+          Silent Sound
         </text>
         <text
           x="700"
-          y="318"
+          y="355"
           fill="var(--color-paper)"
           fillOpacity="0.28"
           fontSize="10"
@@ -127,9 +161,8 @@ export function ShoreMap({
           Bridgeport Harbor
         </text>
 
-        {/* Long Island north shore — existing south edge, no extra land south of the chart */}
         <path
-          d="M 0 640 L 1100 640 L 1100 598 C 980 608 860 590 740 604 C 620 618 520 588 400 602 C 280 616 160 590 80 604 C 40 610 0 598 0 598 Z"
+          d="M 0 640 L 1280 640 L 1280 598 C 1120 608 980 590 840 604 C 700 618 560 588 420 602 C 280 616 160 590 80 604 C 40 610 0 598 0 598 Z"
           fill="var(--color-ink)"
         />
         <text
@@ -144,7 +177,7 @@ export function ShoreMap({
           LONG ISLAND · NORTH SHORE
         </text>
         {ATLAS_LONG_ISLAND.map((t) => {
-          const x = t.inland ? 210 : Math.round(t.x * (1100 / 1792));
+          const x = t.inland ? 210 : Math.round(t.x * (1280 / 1792));
           const y = t.inland ? 632 : 614;
           return (
             <g
@@ -227,7 +260,7 @@ export function ShoreMap({
           aria-label="Narragansett Bay, east of this chart"
         >
           <rect
-            x="916"
+            x="1096"
             y="418"
             width="168"
             height="56"
@@ -237,10 +270,10 @@ export function ShoreMap({
             strokeOpacity="0.5"
             strokeDasharray="4 4"
           />
-          <text x="932" y="442" fill="var(--color-brass)" fontSize="12" fontFamily="var(--font-display)">
+          <text x="1112" y="442" fill="var(--color-brass)" fontSize="12" fontFamily="var(--font-display)">
             Narragansett Bay →
           </text>
-          <text x="932" y="460" fill="var(--color-subtle-fg)" fontSize="10" fontFamily="var(--font-sans)">
+          <text x="1112" y="460" fill="var(--color-subtle-fg)" fontSize="10" fontFamily="var(--font-sans)">
             east of the Sound
           </text>
         </g>
@@ -285,13 +318,15 @@ function TownNode({
   onSelect: (id: string) => void;
 }) {
   const tower = town.kind === "tower";
+  const nh = town.county === "New Haven";
   const fill = active ? "var(--color-brass)" : "var(--color-elevated)";
-  const stroke = active ? "var(--color-paper)" : "var(--color-brass)";
+  const stroke = active ? "var(--color-paper)" : nh ? "var(--color-steel)" : "var(--color-brass)";
   const dir = town.label ?? "top";
   const labelX = dir === "left" ? town.x - town.r - 8 : dir === "right" ? town.x + town.r + 8 : town.x;
   const labelY =
     dir === "top" ? town.y - town.r - 8 : dir === "bottom" ? town.y + town.r + 16 : town.y + 4;
   const anchor = dir === "left" ? "end" : dir === "right" ? "start" : "middle";
+  const fontSize = tower ? 11 : town.r >= 18 ? 14 : town.r >= 13 ? 12 : 10;
 
   return (
     <g
@@ -333,7 +368,7 @@ function TownNode({
         y={labelY}
         textAnchor={anchor}
         fill={active ? "var(--color-paper)" : "var(--color-steel)"}
-        fontSize={tower ? 11 : town.r >= 18 ? 14 : 12}
+        fontSize={fontSize}
         fontFamily="var(--font-display)"
       >
         {town.name}

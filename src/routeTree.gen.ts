@@ -14,6 +14,7 @@ import { Route as BayRouteImport } from './routes/bay'
 import { Route as CityRouteImport } from './routes/city'
 import { Route as RosterRouteImport } from './routes/roster'
 import { Route as ShoreRouteImport } from './routes/shore'
+import { Route as SwwRouteImport } from './routes/sww'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const ShoreRoute = ShoreRouteImport.update({
   path: '/shore',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SwwRoute = SwwRouteImport.update({
+  id: '/sww',
+  path: '/sww',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/city': typeof CityRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
+  '/sww': typeof SwwRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/city': typeof CityRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
+  '/sww': typeof SwwRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,14 @@ export interface FileRoutesById {
   '/city': typeof CityRoute
   '/roster': typeof RosterRoute
   '/shore': typeof ShoreRoute
+  '/sww': typeof SwwRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bay' | '/city' | '/roster' | '/shore'
+  fullPaths: '/' | '/bay' | '/city' | '/roster' | '/shore' | '/sww'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bay' | '/city' | '/roster' | '/shore'
-  id: '__root__' | '/' | '/bay' | '/city' | '/roster' | '/shore'
+  to: '/' | '/bay' | '/city' | '/roster' | '/shore' | '/sww'
+  id: '__root__' | '/' | '/bay' | '/city' | '/roster' | '/shore' | '/sww'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +86,7 @@ export interface RootRouteChildren {
   CityRoute: typeof CityRoute
   RosterRoute: typeof RosterRoute
   ShoreRoute: typeof ShoreRoute
+  SwwRoute: typeof SwwRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShoreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sww': {
+      id: '/sww'
+      path: '/sww'
+      fullPath: '/sww'
+      preLoaderRoute: typeof SwwRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   CityRoute: CityRoute,
   RosterRoute: RosterRoute,
   ShoreRoute: ShoreRoute,
+  SwwRoute: SwwRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

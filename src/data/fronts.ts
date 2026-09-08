@@ -251,7 +251,7 @@ export const FRONTS: Front[] = [
     x: 820,
     y: 40,
     summary: "PbtA: if you have no packet, you have a blank. Not a silhouette of Manhattan.",
-    body: "New Haven now sits on the Shore chart. New York does not. A Camarilla megacity on an East Fairfield map would lie about distance and about what is known.\n\nLeave Kings of New York / Black Empire unmapped until a domain packet exists. Then it gets its own theater — the same way the shore just did.",
+    body: "New Haven County — all twenty-seven municipalities — now sits on the Shore chart. New York does not. A Camarilla megacity on an East Fairfield map would lie about distance and about what is known.\n\nLeave Kings of New York / Black Empire unmapped until a domain packet exists. Then it gets its own theater — the same way the shore just did.",
     portents: [],
     blanks: ["Districts. Storms. Who holds which block. Write that first."],
     cast: [],

@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Island chart, East Fairfield shore, and a ST roster for the chronicle.",
+          "Island, shore, city, bay, estate walk, and ST roster for the chronicle.",
       },
     ],
     links: [

@@ -8,10 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import {
+  SHORE_COUNTIES,
   SHORE_OFFMAP,
   SHORE_OVERVIEW,
   SHORE_TOWNS,
   searchShore,
+  shoreByCounty,
   shoreChildren,
   shoreTown,
   type ShoreTown,
@@ -48,7 +50,7 @@ export function ShoreApp() {
     <div className="flex h-dvh flex-col bg-ink text-paper">
       <AppHeader
         title="Shore Atlas"
-        kicker="East Fairfield · Waterbury · New Haven · the Sound"
+        kicker="East Fairfield · New Haven County · the Sound"
         search={query}
         onSearch={(v) => {
           setQuery(v);
@@ -136,7 +138,6 @@ function ShoreDossier({
   const title = ny ? SHORE_OFFMAP.name : town?.name ?? SHORE_OVERVIEW.name;
   const summary = ny ? SHORE_OFFMAP.summary : town?.summary ?? SHORE_OVERVIEW.summary;
   const body = ny ? SHORE_OFFMAP.body : town?.body ?? SHORE_OVERVIEW.body;
-  const municipalities = SHORE_TOWNS.filter((t) => t.kind !== "tower");
   const towers = SHORE_TOWNS.filter((t) => t.kind === "tower");
 
   return (
@@ -270,16 +271,19 @@ function ShoreDossier({
           </section>
         )}
 
-        <section className="mt-6">
-          <h3 className="text-xs font-medium tracking-widest text-muted uppercase">
-            {town || ny ? "Other towns" : "Towns"}
-          </h3>
-          <TownList
-            towns={municipalities.filter((t) => t.id !== town?.id)}
-            active={town?.id}
-            onSelect={onSelect}
-          />
-        </section>
+        {SHORE_COUNTIES.map((county) => {
+          const list = shoreByCounty(county).filter((t) => t.kind !== "tower" && t.id !== town?.id);
+          if (!list.length) return null;
+          return (
+            <section key={county} className="mt-6">
+              <h3 className="text-xs font-medium tracking-widest text-muted uppercase">
+                {county}
+                {county === "New Haven" ? " County" : ""} · {shoreByCounty(county).filter((t) => t.kind !== "tower").length}
+              </h3>
+              <TownList towns={list} active={town?.id} onSelect={onSelect} />
+            </section>
+          );
+        })}
 
         <section className="mt-6">
           <h3 className="text-xs font-medium tracking-widest text-muted uppercase">Towers</h3>

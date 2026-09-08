@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Compass, Users } from "lucide-react";
+import { Compass, Landmark, Users } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,8 @@ export function AppHeader({
   searchLabel,
   extra,
   title = "Silent Island Atlas",
-  kicker = "Island · Shore · City · Bay · Roster",
+  kicker = "Island · Shore · City · Bay · Estate · Roster",
+  hideSearch = false,
 }: {
   search: string;
   onSearch: (v: string) => void;
@@ -18,6 +19,7 @@ export function AppHeader({
   extra?: ReactNode;
   title?: string;
   kicker?: string;
+  hideSearch?: boolean;
 }) {
   return (
     <header className="flex min-w-0 shrink-0 items-center gap-2 overflow-x-auto border-b border-border px-3 py-3 sm:gap-3 sm:px-4">
@@ -59,6 +61,14 @@ export function AppHeader({
           Bay
         </Link>
         <Link
+          to="/sww"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-muted hover:text-paper"
+          activeProps={{ className: "bg-paper text-ink hover:text-ink" }}
+        >
+          <Landmark className="size-3.5" />
+          Estate
+        </Link>
+        <Link
           to="/roster"
           className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-muted hover:text-paper"
           activeProps={{ className: "bg-paper text-ink hover:text-ink" }}
@@ -67,14 +77,16 @@ export function AppHeader({
           Roster
         </Link>
       </nav>
-      <div className="hidden min-w-0 flex-1 md:block">
-        <Input
-          value={search}
-          onChange={(e) => onSearch(e.target.value)}
-          placeholder={searchLabel}
-          aria-label={searchLabel}
-        />
-      </div>
+      {!hideSearch ? (
+        <div className="hidden min-w-0 flex-1 md:block">
+          <Input
+            value={search}
+            onChange={(e) => onSearch(e.target.value)}
+            placeholder={searchLabel}
+            aria-label={searchLabel}
+          />
+        </div>
+      ) : null}
       {extra}
     </header>
   );
